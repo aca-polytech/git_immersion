@@ -1,70 +1,72 @@
 ----------------------------------------------------------------------
-h1. Setup
+h1. Configuration
 
-h3. Goals
+h3. Buts
 
-* To setup git so that it is ready for work.
+* Configurer git pour qu'il soit prêt à être utilisé.
 
-h2. Setup Name and Email
+h2. Configurer son nom et son email
 
-p. If you have never used git before, you need to do some setup first.
-Run the following commands so that git knows your name and email.  If
-you have git already setup, you can skip down to the line ending
-section.
+p. Si vous n'avez jamais utilisé git avant, vous allez devoir faire quelques
+paramétrages d'abord.
+Lancer les commandes suivantes pour que git connaisse votre nom et votre email.
+Si vous avez déjà configuré git, vous pouvez passez plus bas à la partie sur
+les fins de ligne.
 
 execute:
 git config --global user.name "Your Name"
 git config --global user.email "your_email@whatever.com"
 
-h2. Setup Line Ending Preferences
+h2. Paramétrer les préférences du type de fin de lignes
 
-Also, for Unix/Mac users:
+Aussi, pour les utilisateurs Unix/Mac:
 
 execute:
 git config --global core.autocrlf input
 git config --global core.safecrlf true
 
-And for Windows users:
+Et pour les utilisateurs Windows:
 
 execute:
 git config --global core.autocrlf true
 git config --global core.safecrlf true
 
 ----------------------------------------------------------------------
-h1. More Setup
+h1. Configuration supplémentaire
 
-h3. Goals
+h3. Buts
 
-* Get the tutorial materials setup and ready to run.
+* Avoir le matériel pour le tutoriel paramétré et prêt à être utilisé.
 
-h2. Get the Tutorial package.
+h2. Obtenir le paquet pour le tutoriel.
 
-p. Git the tutorial package from either:
+p. Télécharger le paquet pour le tutoriel depuis:
 
-* The memory sticks provided in the tutorial
-* The URL "http://onestepback.org/download/git_tutorial.zip":http://onestepback.org/download/git_tutorial.zip
+* L'URL "http://gitimmersion.com/git_tutorial.zip":http://gitimmersion.com/git_tutorial.zip
 
-h2. Unzip the tutorial
+h2. Dézipper le tutoriel
 
-p. The tutorial package should have a main directory "git_tutorial"
-with three sub-directories:
+p. Le paquet pour le tutoriel doit contenir un répertoire principal "git_tutorial"
+avec trois sous-répertoires:
 
-* html -- These html files.  Point your browser to html/index.html
-* work -- An empty working directory.  Create your repos in here.
-* repos -- Prepackaged Git repositories so you can jump into the tutorial at any point.  If you get stuck, just copy the desired lab into your working directory.
+* html -- Ces fichiers html.  Lancer votre navigateur depuis html/index.html
+* work -- Un répertoire de travail vide.  Créer votre dépôt dedans.
+* repos -- Dépôts Git préparés pour vous permettre d'avancer dans le tutoriel
+en partant de n'importe quelle étape.  Si vous êtes bloqué, copier juste le
+dépôt souhaité dans votre répertoire de travail.
 
 ----------------------------------------------------------------------
-h1. Create a Project
+h1. Créer un projet
 
-h3. Goals
+h3. Buts
 
-* Learn how to create a git repository from scratch.
+* Apprendre à créer un dépôt git à partir de rien.
 
-h2. Create a "Hello, World" program
+h2. Créer un programme "Hello, World"
 
-p. Starting in the empty working directory, create an empty directory
-named "hello", then create a file named @hello.rb@ with the contents
-below.
+p. En commençant dans le répertoire de travail vide, créer un répertoire vide
+nommé "hello", ensuite créer un fichier nommé @hello.rb@ avec le contenu
+ci-dessous.
 
 Execute:
 mkdir hello
@@ -74,10 +76,10 @@ File: hello.rb
 puts "Hello, World"
 EOF
 
-h2. Create the Repository
+h2. Créer le dépôt
 
-p. You now have a directory with a single file.  To create a git
-repository from that directory, run the git init command.
+p. Vous avez maintenant un répertoire avec un fichier unique. Pour créer une
+dépôt git depuis ce répertoire, lancer la commande git init.
 
 Execute:
 git init
@@ -89,9 +91,9 @@ Output:
 =init
 EOF
 
-h2. Add the program to the repository
+h2. Ajouter le programme au dépôt
 
-Now let's add the "Hello, World" program to the repository.
+Maintenant ajoutons le fichier du programme "Hello, World" au dépôt.
 
 Execute:
 git add hello.rb
@@ -99,7 +101,7 @@ git add hello.rb
 git commit -m "First Commit"
 =commit
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =add
@@ -107,22 +109,22 @@ Output:
 EOF
 
 ----------------------------------------------------------------------
-h1. Checking Status
+h1. Vérifier le status
 
-h3. Goals
+h3. Buts
 
-* Learn how to check the status of the repository
+* Apprendre comment vérifier le statut du dépôt
 
-h2. Check the status of the repository
+h2. Vérifier le status du dépôt
 
-p. Use the @git status@ command to check the current status of the
-repository.
+p. Utiliser la commande @git status@ pour vérifier le statut de votre dépôt.
+
 
 Execute:
 git status
 =status
 
-p. You should see
+p. Vous devriez voir
 
 Output:
 =status
@@ -136,58 +138,65 @@ p. We will use the @git status@ command to continue to monitor the
 state between the repository and the working directory.
 
 ----------------------------------------------------------------------
-h1. Making Changes
+p. La commande status renvoie qu'il n'y a rien à commiter. Cela
+signifie que le dépôt a l'état complet du répertoire de travail.
+Il n'y a pas de changements signalés comme à enregistrer.
 
-h3. Goals
+p. Nous allons utiliser la commande @git status@ pour continuer à suivre
+l'état entre le dépôt et le répertoire de travail.
 
-* Learn how to monitor the state of the working directory
+----------------------------------------------------------------------
+h1. Effectuer des changements
 
-h2. Change the "Hello, World" program.
+h3. Buts
 
-p. It's time to change our hello program to take an argument from the
-command line.  Change the file to be:
+* Apprendre comment suivre l'état du répertoire de travail
+
+h2. Changer le programme "Hello, World".
+
+p. Il est temps de changer notre programme hello pour lui passer un argument
+depuis la ligne de commande. Changer le fichier pour qu'il soit:
 
 File: hello.rb
 puts "Hello, #{ARGV.first}!"
 EOF
 
-h2. Check the status
+h2. Vérifier le status
 
-p. Now check the status of the working directory.
+p. Maintenant vérifier le statut de du répertoire de travail.
 
 Execute:
 !git status
 =status
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =status
 EOF
 
-p. The first thing to notice is that git knows that the @hello.rb@
-file has been modified, but git has not yet been notified of these
-changes.
+p. La première chose à constater est que git sait que le fichier @hello.rb@
+a été modifié, mais que git n'a pas encore averti de ces changements.
 
-p. Also notice that the status message gives you hints about what you
-need to do next.  If you want to add these changes to the repository,
-then use the @git add@ command.  Otherwise the @git checkout@ command
-can be used to discard the changes.
+p. Noter également que le message de status vous guide sur ce que vous alles
+devoir faire par la suite. Si vous voulez ajouter ces changements au répertoire,
+alors utiliser la commande @git add@. Dans le cas contraire, la commande
+@git checkout@ peut être utilisé pour annuler les changements.
 
 h2. Up Next
 
 p. Let's stage the change.
 
 ----------------------------------------------------------------------
-h1. Staging Changes
+h1. Déclarer les changements
 
-h3. Goals
+h3. Buts
 
-* Learn how to stage changes for later commits
+* Apprendre à déclarer les changements pour les commits à venir
 
-h2. Add Changes
+h2. Ajouter les changements
 
-p. Now tell git to stage the changes.  Check the status
+p. Maintenant indiquer à git de prendre en compte les changements déclarés. Vérifier le status
 
 Execute:
 git add hello.rb
@@ -195,39 +204,40 @@ git add hello.rb
 git status
 =status
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =add
 =status
 EOF
 
-p. The change to the @hello.rb@ file has been staged.  This means that
-git now knows about the change, but the change hasn't been
-_permanently_ recorded in the repository yet.  The next commit
-operation will include the staged changes.
+p. Le changement sur le fichier @hello.rb@ a été déclaré. Cela signifie
+que git est informé du changement, mais le changement n'a pas pas encore
+eté enregistré de manière _permanente_ dans le dépôt. La prochaine opération
+de commit inclura les changements qui ont été déclarés.
 
-p. If you decide you _don't_ want to commit that change after all, the
-status command reminds you that the @git reset@ command can be used to
-unstage that change.
+p. Si vous décidez que vous _ne_ voulez pas commiter ce changement après tout,
+la commande de status vous rappelle que la commande @git reset@ peut être
+utilisée pour annuler cet déclaration de ce changement.
 
 ----------------------------------------------------------------------
-h1. Staging and Committing
+h1. Déclarer et commiter
 
-p. A separate staging step in git is in line with the philosophy of
-getting out of the way until you need to deal with source control.
-You can continue to make changes to your working directory, and then
-at the point you want to interact with source control, git allows you
-to record your changes in small commits that record exactly what you
-did.
+p. Une étape de déclaration des fichiers séparée depuis git est en rapport
+avec la philosophie de ne pas être bloqué tant que vous n'avez pas besoin
+d'utiliser un gestionnaire de version.
+Vous pouvez continuer à faire des changements dans votre répertoire de travail
+et ensuite, lorsque vous devez commencer à utiliser le gestion de version, git
+vous permet d'enregistrer vos changements dans de petits commits qui
+enregistrent exacteemnt ce que vous avez fait.
 
-p. For example, suppose you edited three files (@a.rb@, @b.rb@, and
-@c.rb@).  Now you want to commit all the changes, but you want the
-changes in @a.rb@ and @b.rb@ to be a single commit, while the changes
-to @c.rb@ are not logically related to the first two files and should
-be a separate commit.
+p. Par exemple, supposons que vous éditiez trois fichiers (@a.rb@, @b.rb@, et
+@c.rb@). Maintenant vous voulez commiter tous les changements, mais vous voulez
+que les changements dans @a.rb@ et @b.rb@ soit dans un seul commit et que ceux
+dans @c.rb@uuu sans rapport logique avec les deux premiers fichiers soit dans
+ une commit séparé.
 
-p. You could do the following:
+p. Vous pourriez faire:
 
 pre(instructions).
 git add a.rb
@@ -238,39 +248,39 @@ pre(instructions).
 git add c.rb
 git commit -m "Unrelated change to c"
 
-p. By separating staging and committing, you have the ability to
-easily fine tune what goes into each commit.
+p. En séparant la déclaration du commit, vous avez la possibilité de
+choisir précisément et facilement ce que vous ajoutez à chaque commit.
 
 ----------------------------------------------------------------------
-h1. Committing Changes
+h1. Commiter les changements
 
-h3. Goals
+h3. Buts
 
-* Learn how to commit changes to the repository
+* Apprendre à commiter les changements au dépôt
 
-h2. Commit the change
+h2. Commiter le changement
 
-p. Ok, enough about staging.  Let's commit what we have staged to the
-repository.
+p. Ok, assez avec la déclaration.  Maintenant commitons ce que nous avons
+déclaré dans le répertoire.
 
-p. When you used @git commit@ previously to commit the initial version
-of the @hello.rb@ file to the repository, you included the @-m@ flag
-that gave a comment on the command line.  The commit command will
-allow you to interactively edit a comment for the commit.  Let's try
-that now.
+p. Quand vous avez utilisé @git commit@ précédemment pour commiter la version
+initiale du fichier @hello.rb@ dans le dépôt, vous avez inclus l'indicateur @-m@
+qui renvoie un commentaire dans la ligend de commande. La commande de commit va
+vous permettre d'éditer un commentaire de manière interactive pour le commit.
+Essayons maintenant.
 
-p. If you omit the @-m@ flag from the command line, git will pop you
-into the editor of your choice.  The editor is chosen from the
-following list (in priority order):
+p. Si vous oubliez l'indicateur @-m@ depuis la ligne de commande, git va vous
+ouvrir l'éditeur de texte de votre choix. Cet éditeur est choisi en s'appuyant
+sur la liste suivante (avec par ordre de priorité):
 
-* GIT_EDITOR environment variable
-* core.editor configuration setting
-* VISUAL environment variable
-* EDITOR environment variable
+* la variable d'environnement GIT_EDITOR
+* le paramètre de configuration core.editor
+* la variable d'environnement VISUAL
+* la variable d'environnement EDITOR
 
-p. I have the EDITOR variable set to @emacsclient@.
+p. J'ai la variable EDITOR définie à @emacsclient@.
 
-p. So commit now and check the status.
+p. Ainsi commitons maintenant et vérifions le status.
 
 Execute:
 -git commit
@@ -290,8 +300,8 @@ Output:
 #
 EOF
 
-p. On the first line, enter the comment: "Using ARGV".  Save the file
-and exit the editor.  You should see ...
+p. Sur la première ligne, entrer le commentaire: "Using ARGV".  Sauver le
+fichier et sortir de l'éditeur. Vous devriez voir ...
 
 Output:
 git commit
@@ -300,46 +310,48 @@ Waiting for Emacs...
  1 files changed, 1 insertions(+), 1 deletions(-)
 EOF
 
-p. The "Waiting for Emacs..." line comes from the @emacsclient@
-program which sends the file to a running emacs program and waits for
-the file to be closed.  The rest of the output is the standard commit
+p. La ligne "Waiting for Emacs..." vient du programme @emacsclient@ qui envoie
+le fichier au programme dmacs et attend que le fichier soit fermé. Le reste de
+la sortie est constitué des messages standards pour un commmit
 messages.
 
-h2. Check the status
+h2. Vérifier le status
 
-p. Finally let's check the status again.
+p. Finalement essayons de vérifier le status encore.
 
 Execute:
 !git status
 =status
 
-You should see ...
+Vous devriez voir ...
 
 Output:
 =status
 EOF
 
-p. The working directory is clean and ready for you to continue.
+p. Le répertoire de travail est propre et prêt pour que vous continuiez.
 
 ----------------------------------------------------------------------
-h1. Changes, not Files
+h1. Changements, pas fichiers
 
-h3. Goals
+h3. Buts
 
-* Learn that git works with changes, not files.
+* Apprendre que git fonctionne avec les changements, pas avec les fichiers.
 
-p. Most source control systems work with files.  You add a file to
-source control and the system will track changes to the file from that
-point on.
+p. La plupart des logiciels de gestion de version travaillent avec des
+fichiers. Vous ajoutez un fichier à la source versionnée et le sytème suivra
+les changements que vous effectuez dessus à partir de ce moment.
 
-p. Git focuses on the changes to a file rather than the file itself.
-When you say @git add file@, you are not telling git to add the file
-to the repository.  Rather you are saying that git should make note of
-the current state of that file to be committed later.
+p. Git se concentre sur les changements dans un fichier plutôt que sur le
+fichier en lui même.
+Quand vous faites @git add file@, vous ne dites pas à git d'ajouter le fichier
+au dépôt. Vous dites plutôt que git devrait prendre en compte la situation de
+ce fichier pour qu'il soit commité plus tard.
 
-p. We will attempt to explore that difference in this lab.
+p. Nous allons chercher à vous faire explorer cette différence dans cette
+partie.
 
-h2. First Change: Allow a default name
+h2. Premier changement: autoriser un nom de fichier par défaut
 
 p. Change the "Hello, World" program to have a default value if a
 command line argument is not supplied.
@@ -716,7 +728,7 @@ lookup up the hash, we will use the @^@ notation to indicate "the parent
 of v1".
 
 p(note). If the @v1@^ notation gives you any trouble, you can also try
-@v1~1@, which will reference the same version.  This notation means 
+@v1~1@, which will reference the same version.  This notation means
 "the first ancestor of v1".
 
 Execute:
@@ -2223,8 +2235,8 @@ EOF
 p. Now we see that the remote repository "origin" is simply the original
 *hello* repository.  Remote repositories typically live on a separate
 machine, possibly a centralized server.  As we can see here, however,
-they can just as well point to a repository on the same machine.  
-There is nothing particularly special about the name "origin", 
+they can just as well point to a repository on the same machine.
+There is nothing particularly special about the name "origin",
 however the convention is to use the name "origin" for
 the primary centralized repository (if there is one).
 
