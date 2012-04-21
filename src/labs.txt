@@ -130,14 +130,6 @@ Output:
 =status
 EOF
 
-p. The status command reports that there is nothing to commit.  This
-means that the repository has all the current state of the working
-directory.  There are no outstanding changes to record.
-
-p. We will use the @git status@ command to continue to monitor the
-state between the repository and the working directory.
-
-----------------------------------------------------------------------
 p. La commande status renvoie qu'il n'y a rien à commiter. Cela
 signifie que le dépôt a l'état complet du répertoire de travail.
 Il n'y a pas de changements signalés comme à enregistrer.
