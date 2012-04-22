@@ -933,19 +933,19 @@ h3. Buts
 * Apprendre comment annuler revenir sur les changements qui ont déjà
 été commités sur le dépôt local.
 
-h2. Undoing Commits
+h2. Annuler des commits
 
-p. Sometimes you realized that a change that you have already
-committed was not correct and you wish to undo that commit.  There are
-several ways of handling that issue, and the way we are going to use
-in this lab is always safe.
+p. Parfois vous réalisez qu'un changement que vous avez déjà commité
+n'était pas correct et vous souhaitez annuler ce commit. Il y a
+plusieurs façons de gérer ce problème, et la manière dont nous allons faire
+cela dans cette partie du tutoriel est toujours sûre.
 
-p. Essentially we will undo the commit by creating a new commit that
-reverses the unwanted changes.
+p. Essentiellement nous allons annuler le commit en créant un nouveau commit qui
+invers les changements non voulus.
 
-h2. Change the file and commit it.
+h2. Changer le fichier et le commiter.
 
-p. Change the @hello.rb@ file to the following.
+p. Changer le fichier @hello.rb@ de la manière suivante.
 
 File: hello.rb
 # This is an unwanted but committed change
@@ -958,24 +958,25 @@ Execute:
 git add hello.rb
 git commit -m "Oops, we didn't want this commit"
 
-h2. Create a Reverting Commit
+h2. Créer un commit de retour en arrière
 
-p. To undo a committed change, we need to generate a commit that
-removes the changes introduced by our unwanted commit.
+p. Pour annuler un changement commité, nous avons besoin de générer un commit
+qui enlève les changements introduits par notre commit non voulu.
 
 Execute:
 -git revert HEAD
 +git revert HEAD --no-edit
 =revert
 
-p. This will pop you into the editor.  You can edit the default commit
-message or leave it as is.  Save and close the file. You should see ...
+p. Cela va vous ouvrir votre éditeur de texte. Vous pouvez éditer le message
+de commit par défaut ou le laisser tel quel. Sauver et fermer le fichier.
+Vous devriez voir ...
 
 Output:
 =revert
 EOF
 
-p. Since we were undoing the very last commit we made, we were able to
+p. Comme nous étions Since we were undoing the very last commit we made, we were able to
 use @HEAD@ as the argument to revert.  We can revert any arbitrary
 commit earlier in history by simply specifying its hash value.
 
