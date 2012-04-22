@@ -702,28 +702,28 @@ h1. Tagger des versions
 
 h3. Buts
 
-* Learn how to tag commits with names for future reference
+* Apprendre comment tagger des commits avec des noms pour des références futures
 
-p. Let's call the current version of the hello program version 1 (v1).
+p. Appelons la version courante du programme hello version 1 (v1).
 
-h2. Tagging version 1
+h2. Tagger la version 1
 
 Execute:
 git tag v1
 =tag
 
-p. Now you can refer to the current version of the program as v1.
+p. Maintenant vous pouvez vous référer à la version courante du programme comme v1.
 
-h2. Tagging Previous Versions
+h2. Tagger des versions précédentes
 
-p. Let's tag the version immediately prior to the current version
-v1-beta.  First we need to checkout the previous version.  Rather than
-lookup up the hash, we will use the @^@ notation to indicate "the parent
-of v1".
+p. Taggons immédiatement la première version précédente à la version courante sous
+le nom v1-beta.  D'abord, nous devons revenir à la version précédente. Plutôt que
+d'utiliser le hash, nous allons utilise la notation @^@ pour indiquer "le parent
+de v1".
 
-p(note). If the @v1@^ notation gives you any trouble, you can also try
-@v1~1@, which will reference the same version.  This notation means
-"the first ancestor of v1".
+p(note). Si la notation @v1@^ vous cause un problème, vous pouvez aussi essayer
+@v1~1@, qui référencera la même version. Cette notation signifie le "premier
+ancêtre de v1".
 
 Execute:
 git checkout v1^
@@ -736,15 +736,15 @@ Output:
 =cat
 EOF
 
-p. See, this is the version with the default value _before_ we added
-the comment.  Let's make this v1-beta.
+p. Voir que c'est la version avec la valeur par défault _avant_ que nous ajoutions
+le commentaire. Faisons cette v1-beta.
 
 Execute:
 git tag v1-beta
 
-h2. Checking Out by Tag Name
+h2. Récupérer par nom de tag
 
-p. Now try going back and forth between the two tagged versions.
+p. Maintenant essayons de passer d'une version taggée à l'autre et inversement.
 
 Execute:
 git checkout v1
@@ -757,9 +757,9 @@ Output:
 =cov1beta
 EOF
 
-h2. Viewing Tags using the @tag@ command
+h2. Voir les tags en utilisant la commande @tag@
 
-p. You can see what tags are available using the @git tag@ command.
+p. Vous pouvez voir quels tags sont disponibles en utilisant la commande @git tag@.
 
 Execute:
 git tag
@@ -769,9 +769,9 @@ Output:
 =tag2
 EOF
 
-h2. Viewing Tags in the Logs
+h2. Voir les tags dans les logs
 
-p. You can also check for tags in the log.
+p. Vous pouvez aussi vérifier les tags dans le log.
 
 Execute:
 git hist master --all
@@ -781,31 +781,32 @@ Output:
 =hist
 EOF
 
-p. You can see both tags (@v1@ and @v1-beta@) listed in the log
-output, along with the branch name (@master@).  Also @HEAD@ shows you
-the currently checked out commit (which is @v1-beta@ at the moment).
+p. Vous pouvez voir les deux tags (@v1@ et @v1-beta@) listé dans la sortie
+de log, avec à côté le nom de la branche (@master@).  Aussi, @HEAD@ vous
+montre le commit qui est actuellement utilisé (qui est le @v1-beta@ pour
+le moment).
 
 ----------------------------------------------------------------------
-h1. Undoing Local Changes (before staging)
+h1. Annuler les changements locaux (avant les déclarations)
 
-h3. Goals
+h3. Buts
 
-* Learn how to revert changes in the working directory
+* Apprendre comment revenir sur les changements dans votre répertoire de travail
 
-h2. Checkout Master
+h2. Repasser sur la branche master
 
-p. Make sure you are on the lastest commit in master before proceeding.
+p. S'assurer que vous êtes sur le dernier commit dans master avant de continuer.
 
 Execute:
 git checkout master
 
-h2. Change hello.rb
+h2. Changer hello.rb
 
-p. Sometimes you have modified a file in your local working directory
-and you wish to just revert to what has already been committed.  The
-checkout command will handle that.
+p. Quelquefois, vous avez modifié un fichier dans votre répertoire de travail local
+et vous souhaitez simplement revenir à l'état de ce qui a été déjà commité. La
+commande checkout va gérer cela.
 
-Change hello.rb to have a bad comment.
+Changer hello.rb pour avoir un mauvais commentaire.
 
 File: hello.rb
 # This is a bad comment.  We want to revert it.
@@ -814,9 +815,9 @@ name = ARGV.first || "World"
 puts "Hello, #{name}!"
 EOF
 
-h2. Check the Status
+h2. Vérifier le status
 
-p. First, check the status of the working directory.
+p. En premier, vérifier le status du répertoire de travail.
 
 Execute:
 !git status
@@ -826,13 +827,12 @@ Output:
 =status
 EOF
 
-p. We see that the @hello.rb@ file has been modified, but hasn't been
-staged yet.
+p. Nous voyons que le fichier @hello.rb@ a été modifié mais n'a pas encore été déclaré.
 
-h2. Revert the changes in the working directory
+h2. Annuler les changements dans le répertoire de travail
 
-p. Use the @checkout@ command to checkout the repository's version of
-the @hello.rb@ file.
+p. Utiliser la commande @checkout@ pour récupérer la version du fichier @hello.rb@ issue
+du dépôt.
 
 Execute:
 git checkout hello.rb
@@ -848,20 +848,20 @@ Output:
 =cat
 EOF
 
-p. The status command shows us that there are no outstanding changes
-in the working directory.  And the "bad comment" is no longer part of
-the file contents.
+p. La commande status nous montre qu'il n'y a plus de changements indiqués
+dans le répertoire de travail. Et le "mauvais commentaire" n'est plus dans
+le contenu du fichier.
 
 ----------------------------------------------------------------------
-h1. Undoing Staged Changes (before committing)
+h1. Annuler les déclarations de fichiers changés (avant de commiter)
 
-h3. Goals
+h3. Buts
 
-* Learn how to revert changes that have been staged
+* Apprendre comment annuler des changements qui ont déjà été déclarés
 
-h2. Change the file and stage the change
+h2. Changer le fichier et déclarer le changement
 
-p. Modify the @hello.rb@ file to have a bad comment
+p. Modifier le fichier @hello.rb@ pour avoir un mauvais commentaire
 
 File: hello.rb
 # This is an unwanted but staged comment
@@ -870,14 +870,14 @@ name = ARGV.first || "World"
 puts "Hello, #{name}!"
 EOF
 
-p. And then go ahead and stage it.
+p. Et maintenant continuer et déclarer le fichier.
 
 Execute:
 git add hello.rb
 
-h2. Check the Status
+h2. Vérifier le status
 
-p. Check the status of your unwanted change.
+p. Vérifier le status de votre changement non désiré.
 
 Execute:
 git status
@@ -887,13 +887,13 @@ Output:
 =status
 EOF
 
-p. The status output shows that the change has been staged and is
-ready to be committed.
+p. La sortie du status montre que le changement a été déclaré et qu'il
+est prêt à être commité.
 
-h2. Reset the Staging Area
+h2. Réinitialiser la liste des fichiers déclarés
 
-p. Fortunately the status output tells us exactly what we need to do
-to unstage the change.
+p. Heureusement la ligne de status nous dit exactement comment faire pour
+annuler la déclaration du changement.
 
 Execute:
 git reset HEAD hello.rb
@@ -903,15 +903,16 @@ Output:
 =reset
 EOF
 
-p. The @reset@ command resets the staging area to be whatever is in
-HEAD.  This clears the staging area of the change we just staged.
+p. La commande @reset@ réinitialise la liste des fichiers déclarés à celle
+qui est dans HEAD. Cela nettoye la liste des fichiers déclarés du changement
+que nous venions juste de déclarer.
 
-p. The @reset@ command (by default) doesn't change the working
-directory.  So the working directory still has the unwanted comment in
-it.  We can use  the @checkout@ command of the previous lab to remove
-the unwanted change from the working directory.
+p. La commande @reset@ (par défaut) ne change pas le répertoire de travail
+courant. Ainsi le répertoire de travail a toujours le commentaire non souhaité.
+Nous pouvons utiliser la commande @checkout@ de la précédente partie pour enlever
+la changement non désiré du répertoire de travail.
 
-h2. Checkout the Committed Version
+h2. Mettre à jour à la version commitée
 
 Execute:
 git checkout hello.rb
@@ -922,14 +923,15 @@ Output:
 =status2
 EOF
 
-p. And our working directory is clean once again.
+p. Et notre répertoire de travail est propre à nouveau.
 
 ----------------------------------------------------------------------
-h1. Undoing Committed Changes
+h1. Annuler les changements déjà commités
 
-h3. Goals
+h3. Buts
 
-* Learn how to revert changes that have been committed to a local repository.
+* Apprendre comment annuler revenir sur les changements qui ont déjà
+été commités sur le dépôt local.
 
 h2. Undoing Commits
 
