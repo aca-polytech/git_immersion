@@ -345,8 +345,8 @@ partie.
 
 h2. Premier changement: autoriser un nom de fichier par défaut
 
-p. Change the "Hello, World" program to have a default value if a
-command line argument is not supplied.
+p. Changer le programme "Hello, World" pour avoir une valeur par défault si un
+argument est passé en ligne en commande si il n'est pas supplié.
 
 File: hello.rb
 name = ARGV.first || "World"
@@ -354,16 +354,16 @@ name = ARGV.first || "World"
 puts "Hello, #{name}!"
 EOF
 
-h2. Add this Change
+h2. Rajouter ce changement
 
-p. Now add this change to the git's staging area.
+p. Maintenant ajouter ce changement dans la déclaration des fichiers de git.
 
 Execute:
 git add hello.rb
 
-h2. Second change: Add a comment
+h2. Deuxième changement: ajouter une commentaire
 
-p. Now add a comment to the "Hello, World" program.
+p. Maintenant ajouter un commentaire au programme "Hello, World".
 
 File: hello.rb
 # Default is "World"
@@ -372,29 +372,28 @@ name = ARGV.first || "World"
 puts "Hello, #{name}!"
 EOF
 
-h2. Check the current status
+h2. Vérifier le status courant
 
 Execute:
 !git status
 =status
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =status
 EOF
 
-p. Notice how @hello.rb@ is listed twice in the status.  The first
-change (adding a default) is staged and is ready to be committed.  The
-second change (adding a comment) is unstaged.  If you were to commit
-right now, the comment would not be saved in the repository.
+p. Remarquer comment @hello.rb@ est listé deux fois dans le status. Le premier
+changement (ajouter une valeur par défaut) est déclarée et est prête à être commité.
+Le second changement (ajouter un commentaire) n'est pas déclaré. Si vous deviez
+commiter dès maintenant, le commentaire ne serait pas sauvé dans le dépôt.
 
-p. Let's try that.
+p. Maintenant essayons cela.
 
-h2. Committing
+h2. Commiter
 
-p. Commit the staged change (the default value), and then recheck the
-status.
+p. Commiter le changement déclaré (la valeur par défaut), et ensuite revérifions le status.
 
 Execute:
 git commit -m "Added a default value"
@@ -402,91 +401,92 @@ git commit -m "Added a default value"
 git status
 =status2
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =commit
 =status2
 EOF
 
-p. The status command is telling you that @hello.rb@ has unrecorded changes,
-but is no longer in the staging area.
+p. La commande de status vous dis que @hello.rb@ a des changements non enregistrés,
+mais n'est plus dans la liste des fichiers déclarés.
 
-h2. Add the Second Change
+h2. Ajouter le second changement
 
-p. Now add the second change to staging area, then run git status.
+p. Maintenant ajouter le second changement à la liste des fichiers déclarés,
+ensuite lancer git status.
 
 Execute:
 git add .
 !git status
 =status3
 
-p(note). *Note:* We used the current directory ('.') as the
-file to add.  This is a really convenient shortcut for adding in all
-the changes to the files in the current directory and below.  But
-since it adds everything, it is a _really_ good idea to check the status
-before doing an <tt>add .</tt>, just to make sure you don't add any
-file that is not intended.
+p(note). *Note:* Nous utilisons le répertoire courrant ('.') comme le
+fichier à ajouter. C'est vraiment un raccourci pratique pour ajouter tous
+les changements au fichiers dans le répertoire courant et en dessous. Mais
+comme il ajoute tout, c'est _vraiment_ une bonne idée de vérifier le status
+avant de faire un <tt>add .</tt>, juste pour s'assurer que vous n'ajoutez aucun
+fichier qui ne soit pas désiré.
 
-p(note). I wanted you to see the "add ." trick, but we will
-continue to add explicit files in the rest of this tutorial just to be
-safe.
+p(note). Je voulais que voyiez l'astuce "add .", mais nous allons continuer
+à ajouter explicitement les fichiers dans le reste du tutoriel juste pour
+être sûr.
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =status3
 EOF
 
-p. Now the second change has been staged and is ready to commit.
+p. Maintenant le second changement a été déclaré et est prêt à être commité.
 
-h2. Commit the Second Change
+h2. Commiter le second changement
 
 Execute:
 git commit -m "Added a comment"
 
 ----------------------------------------------------------------------
-h1. History
+h1. Historique
 
-h3. Goals
+h3. Buts
 
-* Learn how to view the history of the project.
+* Apprendre comment voir l'historique du projet.
 
-p. Getting a listing of what changes have been made is the function of
-the @git log@ command.
+p. Avoir une liste des changements qui ont été effectués est le rôle de la
+commande @git log@.
 
 Execute:
 git log
 =log
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =log
 EOF
 
-p. Here is a list of all four commits that we have made to the
-repository so far.
+p. Voici la liste des quatre commits que nous avons fait dans le dépôt
+jusqu'à maintenant.
 
-h2. One Line Histories
+h2. Historique avec entrées sur une ligne
 
-p. You have a great deal of control over exactly what the @log@ command
-displays.  I like the one line format:
+p. Vous avez une grande possibilité de contrôle sur ce que la commande @log@
+renvoie. J'aime bien le formatage sur une ligne:
 
 Execute:
 git log --pretty=oneline
 =oneline
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =oneline
 EOF
 
-h2. Controlling Which Entries are Displayed
+h2. Contrôler quelles entrées sont affichées
 
-p. There are a lot of options for selecting which entries are
-displayed in the log.  Play around with the following options:
+p. Il y a beaucoup d'options pour sélectionner quelles entrées sont
+affichées dans le log. Jouez avec les commandes suivantes:
 
 pre(instructions).
 git log --pretty=oneline --max-count=2
@@ -495,63 +495,63 @@ git log --pretty=oneline --until='5 minutes ago'
 git log --pretty=oneline --author=<your name>
 git log --pretty=oneline --all
 
-p. See man git-log for all the details.
+p. Voir man git-log pour tous les détails.
 
-h2. Getting Fancy
+h2. Devenir imaginatif
 
-p. Here's what I use to review the changes made in the last week.
-I'll add @--author=jim@ if I only want to see changes I made.
+p. Voici ce que j'utilise pour vérifier les changements fait dans la dernière semaine.
+J'ajouterai @--author=jim@ si je veux seulement les changements que j'ai fait.
 
 pre(instructions).
 git log --all --pretty=format:"%h %cd %s (%an)" --since='7 days ago'
 
-h2. The Ultimate Log Format
+h2. Le formatage de fichier de log ultime
 
-p. Over time, I've decided that I like the following log format for
-most of my work.
+p. Au fil du temps, j'ai décidé que j'aimais le formatage de log suivant
+pour la plupart de mon travail.
 
 Execute:
 git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
 =ultimate
 
-It looks like this:
+Cela ressemble à:
 
 Output:
 =ultimate
 EOF
 
-p. Let's look at it in detail:
+p. Regardons cette ligne dans le détail:
 
-* @--pretty="..."@ defines the format of the output.
-* @%h@ is the abbreviated hash of the commit
-* @%d@ are any decorations on that commit (e.g. branch heads or tags)
-* @%ad@ is the author date
-* @%s@ is the comment
-* @%an@ is the author name
-* @--graph@ informs git to display the commit tree in an ASCII graph layout
-* @--date=short@ keeps the date format nice and short
+* @--pretty="..."@ définit le format de sortie.
+* @%h@ est la hash abrégé du commit
+* @%d@ sont le type de décoration sur ce commit (comme les branches ou les tags)
+* @%ad@ est la date de l'auteur
+* @%s@ est le commentaire
+* @%an@ est le nom de l'auteur
+* @--graph@ informe git d'afficher l'arbre de commit dans un rendu de type graphe ASCII
+* @--date=short@ garde le format de la date joli et court
 
-p. This is a lot to type every time you want to see the log.
-Fortunately we will learn about git aliases in the next lab.
+p. C'est beaucoup à taper chaque fois que vous voulez voir le log.
+Heuseusement nous apprendrons à utiliser les alias git dans la prochaine partie.
 
-h2. Other Tools
+h2. Autres outils
 
-p. Both <code>gitx</code> (for Macs) and <code>gitk</code> (any
-platform) are useful in exploring log history.
+p. Les deux <code>gitx</code> (pour Macs) et <code>gitk</code> (chaque plateforme)
+sont utile pour exlorer l'historique des logs.
 
 ----------------------------------------------------------------------
-h1. Aliases
+h1. Alias
 
-h3. Goals
+h3. Buts
 
-* Learn how to setup aliases and shortcuts for git commands
+* Apprendre comment paramétrer les alias et les raccourcis pour les commandes git
 
-h2. Common Aliases
+h2. Alias communs
 
-p. +git status+, +git add+, +git commit+, and +git checkout+ are such
-common commands that it is useful to have abbreviations for them.
+p. +git status+, +git add+, +git commit+, et +git checkout+ sont ces
+commandes habituelles dont il est utile d'avoir des abbréviations.
 
-p. Add the following to the .gitconfig file in your $HOME directory.
+p. Ajouter ce qui suit dans le fichier .gitconfig dans votre répertoire $HOME.
 
 file: .gitconfig
 [alias]
@@ -564,37 +564,37 @@ file: .gitconfig
   dump = cat-file -p
 EOF
 
-p. We've covered checkout, commit and status already.  And we just
-covered the @log@ command in the previous lab. Now you can type @git
-co@ wherever you used to have to type @git checkout@.  Likewise with
-@git st@ for @git status@ and @git ci@ for @git commit@.  And best of
-all, @git hist@ will allow you to avoid the really long @log@ command.
+p. Nous avons couverts checkout, commit et status. Et nous avons aussi
+couvert la commande @log@ dans la précédente partie. Maintenant vous
+pouvez taper @git co@ à la place de taper @git checkout@. De la même manière
+@git st@ pour @git status@ et @git ci@ pour @git commit@. Et le meilleur de
+tous, @git hist@ vous permettra d'éviter la très longue commande @log@.
 
-p. Go ahead and give the new commands a try.
+p. Continuez et faites quelques essais pour essayer.
 
-h2. Define the @hist@ alias in your @.gitconfig@ file
+h2. Définir l'alias @hist@ dans votre fichier @.gitconfig@
 
-p. For the most part, I will continue to type out the full command in
-these instructions.  The only exception is that I will use the @hist@
-alias defined above anytime we need to see the git log output.  Make
-sure you have a @hist@ alias setup in your @.gitconfig@ file before
-continuing if you wish to follow along.
+p. Pour la plupart des cas, je continuerais à taper les commandes complètes
+dans les instructions. La seule exception est que j'utiliserais l'alias @hist@
+défini ci-dessus chaque fois que vous avez besoin de voir la sortie de log git.
+Assurer vous d'avoir un alias @hist@ configuré dans votre fichier @.gitconfig@
+avant de continuer le tutoriel suivant.
 
-h2. @Type@ and @Dump@
+h2. @Type@ et @Dump@
 
-p. We've added a few aliases for commands we haven't covered yet. The
-@git branch@ command will be coming up soon.  And the @git cat-file@
-command is useful for exploring git, which we will see in a little
-while.
+p. Nous avons déjà ajouté quelques alias pour des commandes que nous n'avons
+pas encore abordé. La commande @git branch@ va bientôt être abordée. et la
+commande @git cat-file@ est utile pour explorer git, ce que nous verrons dans
+un petit moment.
 
-h2. Shell Aliases (Optional)
+h2. Alias de la ligne de commande (optionnel)
 
-p(note). *Note:* This section is for folks running a posix-like shell.
-Windows users and other non-posix shell users can feel free to skip to
-the next lab.
+p(note). *Note:* Cette section est pour les utilisateurs qui utilisent une ligne
+de commande de type posix. Les utilisateurs Windows et utilisateurs n'utilisant pas
+une ligne de commande non-posix peuvent passer à la prochaine partie.
 
-p. If your shell supports aliases or shortcuts, then you can add
-aliases at that level too.  Here are the ones I use:
+p. Si votre ligne de commande supporte les alias et les raccourcis, ensuite vous
+pouvez utiliser des alias à ce niveau également. Voici ceux que j'utilise:
 
 file: .profile
 alias gs='git status '
@@ -610,43 +610,45 @@ alias got='git '
 alias get='git '
 EOF
 
-p. The @go@ abbreviation for @git checkout@ is particularly nice.  It
-allows me to type:
+p. L'abbréviation @go@ pour @git checkout@ est particulièrement joli. Cela me
+permet de taper:
 
 pre(instructions). go <branch>
 
-p. to checkout a particular branch.
+p. pour récupérer une branche particulière.
 
-p. And yes, I do mistype @git@ as @get@ or @got@ often enough to
-create aliases for them.
+p. Et oui, je tape par erreur @git@ comme @get@ ou @got@ suffisamment souvent
+pour créer l'alias pour eux.
 
 ----------------------------------------------------------------------
-h1. Getting Old Versions
+h1. Obtenir de vieille versions
 
-h3. Goals
+h3. Buts
 
-* Learn how to checkout any previous snapshot into the working directory.
+* Apprendre comment récupérer n'importe quelle état du dépôt dans le répertoire
+de travail.
 
-p. Going back in history is very easy.  The checkout command will copy
-any snapshot from the repository to the working directory.
+p. Retourner dans l'historique est très facile. La comande checkout va copier
+n'importe quel état depuis le dépôt vers le répertoire de travail.
 
-h2. Get the hashes for previous versions
+h2. Obtenir les hashs pour les précédentes versions
 
 Execute:
 git hist
 =log
 
-p(note). *Note:* You did remember to define @hist@ in your
-@.gitconfig@ file, right?  If not, review the lab on aliases.
+p(note). *Note:* Vous vous rappelez avoir défini @hist@ dans votre
+fichier @.gitconfig@, n'est ce pas? Si ce n'est pas le cas, revoyez le tutoriel
+sur les alias.
 
 Output:
 =log
 EOF
 
-p. Examine the log output and find the hash for the first commit.  It
-should be the last line of the @git hist@ output.  Use that hash code
-(the first 7 characters are enough) in the command below.  Then check
-the contents of the hello.rb file.
+p. Examiner la sortie du log et trouver le hash pour le premier commit. Cela
+doit être la dernière ligne de la sortie de @git hist@. Utiliser le code hash
+(les 7 premiers caractères sont suffisants) dans la commande ci-dessous. Ensuite,
+vérifier le contenu du fichier hello.rb.
 
 Set: hash=hash_for("First Commit")
 Execute:
@@ -655,29 +657,29 @@ git checkout <hash>
 cat hello.rb
 =cat
 
-p(note). *Note:* The commands given here are Unix commands and
-work on both Mac and Linux boxes.  Unfortunately, Windows users will
-have to translate to their native commands.
+p(note). *Note:* Les commandes données ici sont des commandes Unix et
+fonctionnent à la fois sous Mac et Linux. Malheureusement, les utilisateurs Windows
+devront traduire pour leur ligne de commande propre (DOS).
 
-p(note). *Note:* Many commands depend on the hash values in the
-repository.  Since your hash values will vary from mine, whenever you
-see something like &lt;hash&gt; or &lt;treehash&gt; in the command,
-substitute in the proper hash value for your repository.
+p(note). *Note:* De nombreuses commandes dépendent des valeurs de hash
+dans le dépôt. Comme vos valeurs de hash vont changer des miennes, chaque fois que
+vous voyez quelque chose comme &lt;hash&gt; ou &lt;treehash&gt; dans la commande,
+remplacer la valeur par votre propre valeur de dépôt.
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =checkout
 =cat
 EOF
 
-p. The output of the @checkout@ command explains the situation pretty
-well.  Older versions of git will complain about not being on a local
-branch.  In any case, don't worry about that for now.
+p. La sortie de la commande @checkout@ explique la situation de manière assez
+claire. Les vieilles versions de git vont se plaindre de ne pas être sur une
+branche locale. Dans tous les cas, ne vous en inquiétez pas maintenant.
 
-p. Notice the contents of the hello.rb file are the original contents.
+p. Noter que les contenus du fichier hello.rb sont les contenus originaux.
 
-h2. Return the latest version in the master branch
+h2. Retourner la dernière version de la branche master
 
 Execute:
 git checkout master
@@ -685,20 +687,20 @@ git checkout master
 cat hello.rb
 =cat2
 
-p. You should see ...
+p. Vous devriez voir ...
 
 Output:
 =checkout2
 =cat2
 EOF
 
-p. 'master' is the name of the default branch.  By checking out a branch
-by name, you go to the lastest version of that branch.
+p. 'master' est le nom de la branche par défaut. En faisant un "checkout"
+sur une branche, vous avez la dernière version de cette branche.
 
 ----------------------------------------------------------------------
-h1. Tagging versions
+h1. Tagger des versions
 
-h3. Goals
+h3. Buts
 
 * Learn how to tag commits with names for future reference
 
