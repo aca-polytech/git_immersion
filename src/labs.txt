@@ -781,7 +781,7 @@ Output:
 =hist
 EOF
 
-p. Vous pouvez voir les deux tags (@v1@ et @v1-beta@) listé dans la sortie
+p. Vous pouvez voir les deux tags (@v1@ et @v1-beta@) listés dans la sortie
 de log, avec à côté le nom de la branche (@master@).  Aussi, @HEAD@ vous
 montre le commit qui est actuellement utilisé (qui est le @v1-beta@ pour
 le moment).
@@ -976,17 +976,18 @@ Output:
 =revert
 EOF
 
-p. Comme nous étions Since we were undoing the very last commit we made, we were able to
-use @HEAD@ as the argument to revert.  We can revert any arbitrary
-commit earlier in history by simply specifying its hash value.
+p. Comme nous étions en train d'annuler le dernier commit que nous avions
+fait, nous avons été capable d'utiliser @HEAD@ comme argument pour annuler.
+Nous pouvons annuler n'importe quel commit de manière arbitraire plus ancien
+dans l'historique en spécifiant simplement la valeur de son hash.
 
-p(note). *Note:* The @--no-edit@ in the output can be ignored.
-It was necessary to generate the output without opening the editor.
+p(note). *Note:* Le @--no-edit@ dans la sortie peut être ignoré.
+Il était nécessaire de générer la sortie sans ouvrir l'éditeur.
 
-h2. Check the log
+h2. Vérifier le log
 
-p. Checking the log shows both the unwanted and the reverting commits
-in our repository.
+p. Vérifier que le log montre à la fois les commits non désirés et ceux
+de retour en arrière dans notre répertoire.
 
 Execute:
 git hist
@@ -996,21 +997,21 @@ Output:
 =hist
 EOF
 
-p. This technique will work with any commit (although you may have to
-resolve conflicts).  It is safe to use even on branches that are
-publicly shared on remote repositories.
+p. Cette technique fonctionnera avec n'importe quel commit (même si vous allez
+peut être devoir résoudre des conflits). C'est sûr pour être utilisé même sur
+les branches qui sont partagées sur des dépôts distants.
 
-h2. Up Next
+h2. Quoi de plus
 
-p. Next, let's look at a technique that can be used to remove the most
-recent commits from the repository history.
+p. Maintenant, allons regarder une technique qui peut être utilisée pour enlever
+les commits les plus récents de l'historique du dépôt.
 
 ----------------------------------------------------------------------
-h1. Removing Commits from a Branch
+h1. Enlever des commits d'une branche
 
-h3. Goals
+h3. Buts
 
-* Learn how to remove the most recent commits from a branch
+* Apprendre comment enlever les commits les plus récents d'une branche
 
 p. The @revert@ command of the previous section is a powerful command
 that lets us undo the effects of any commit in the repository.
@@ -2564,9 +2565,9 @@ git pull shared master
 cat README
 
 ----------------------------------------------------------------------
-h1. Hosting your Git Repositories
+h1. Héberger vos dépôts Git
 
-h3. Goals
+h3. Buts
 
 * Learn how to setup git server for sharing repositories.
 
@@ -2597,37 +2598,40 @@ there is no authentication on this server, anyone could push to your
 repository.
 
 ----------------------------------------------------------------------
-h1. Sharing Repos
+h1. Partager des dépôts
 
-h3. Goals
+h3. Buts
 
-* Learn to share repos across WIFI.
+* Apprendre comment partager un dépôt via le WIFI.
 
-p. See if your neighbor is running the git daemon.  Exchange IP
-addresses and see if you can pull from each other's repositories.
+p. Voir si votre voisin fait tourner une "démon" git. Echanger les
+addresses IP et voir si vous pouvez récupérer chacun le dépôt de l'autre.
 
-p(note). *NOTE:* The gitjour gem is really useful in sharing
-ad-hoc repositories.
-
-----------------------------------------------------------------------
-h1. Advanced / Future Topics
-
-p. Here are some topics you might want to research on your own:
-
-* Reverting Committed Changes
-* Cross OS Line Endings
-* Remote Servers
-* Protocols
-* SSH Setup
-* Remote Branch Management
-* Finding Buggy Commits (git bisect)
-* Workflows
-* Non-command line tools (gitx, gitk, magit)
-* Working with GitHub
+p(note). *NOTE:* Le gem gitjour est très pratique pour partager
+des dépôts ad-hoc.
 
 ----------------------------------------------------------------------
-h1. Thank You
+h1. Sujets avancés / futurs
 
-p. Thank you for trying out the Git Immersion Labs.  Feel free to send
-comments to jim.weirich@gmail.com.
+p. Voici quelques un des sujets que vous pourriez souhaiter regarder
+par vous même:
+
+* Annulation des changements commités
+* Fin de lignes pour les différents systèmes d'exploitation
+* Serveurs distants
+* Protocoles
+* Paramétrage SSH
+* Gestion de branche à distance
+* Recherche des commits buggés (git bisect)
+* Chaînes de traitement
+* Outils graphiques (gitx, gitk, magit)
+* Usage avec GitHub
+
+----------------------------------------------------------------------
+h1. Merci
+
+p. Merci d'avoir essayer le tutoriel Git Immersion. Libre à vous de prendre
+contact avec l'auteur original (anglophone) à l'adresse jim.weirich@gmail.com
+ou pour des remarques sur la traduction à thomas_gratier@yahoo.fr
+comments to
 
