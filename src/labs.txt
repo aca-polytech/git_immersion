@@ -2541,22 +2541,22 @@ _never_ remember the commands to do that.  Check out the "Git Remote
 Branch" gem for easy management of remote branches.
 
 ----------------------------------------------------------------------
-h1. Pulling Shared Changes
+h1. Récupérer les changements partagés
 
-h3. Goals
+h3. Buts
 
-* Learn how to pull changes from a shared repository.
+* Apprendre comment récupérer les changements depuis un dépôt partagé.
 
-p. Quick hop over to the clone repository and let's pull down the
-changes just pushed to the shared repo.
+p. Aller rapidement dans le clône du dépôt et maintenant récupérons rapidement
+les changements qu'on vient juste d'effectuer sur le dépôt partagé.
 
 Execute:
 cd ../cloned_hello
 +pwd
 
-p{color:red}. *NOTE: Now in the _cloned_hello_ repo.*
+p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_hello_.*
 
-p. Continue with...
+p. Continuer avec ...
 
 Execute:
 git remote add shared ../hello.git
@@ -2569,18 +2569,18 @@ h1. Héberger vos dépôts Git
 
 h3. Buts
 
-* Learn how to setup git server for sharing repositories.
+* Apprendre comment configurer un serveur git pour partager des dépôts.
 
-p. There are many ways to share git repositories over the network.
-Here is a quick and dirty way.
+p. Il y a de nombreux moyens de partager des dépôts git via un réseau.
+Voici une méthode rapide et pas "très propre".
 
-h2. Start up the git server
+h2. Démarrer le serveur git
 
 execute:
-# (From the work directory)
+# (Depuis le répertoire de travail)
 git daemon --verbose --export-all --base-path=.
 
-p. Now, in a separate terminal window, go to your work directory
+p. Maintenant, dans une fenêtre de terminal séparée, aller au répertoire de travail
 
 execute:
 # (From the work directory)
@@ -2588,14 +2588,14 @@ git clone git://localhost/hello.git network_hello
 cd network_hello
 ls
 
-p. You should see a copy of hello project.
+p. Vous devriez voir une copie du projet hello.
 
-h2. Pushing to the Git Daemon
+h2. Envoyer vers le démon Git
 
-p. If you want to push to the git daemon repository, add
-@--enable=receive-pack@ to the git daemon command.  Be careful because
-there is no authentication on this server, anyone could push to your
-repository.
+p. Si vous voulez pouvoir pousser vers le dépôt du démon git, ajouter
+@--enable=receive-pack@ à la commande du démon git. Faites attention parce
+qu'il n'y a pas d'authentification sur le serveur, n'importe qui peut
+pousser vers votre dépôt.
 
 ----------------------------------------------------------------------
 h1. Partager des dépôts
@@ -2630,8 +2630,7 @@ par vous même:
 ----------------------------------------------------------------------
 h1. Merci
 
-p. Merci d'avoir essayer le tutoriel Git Immersion. Libre à vous de prendre
+p. Merci d'avoir essayé le tutoriel Git Immersion. Libre à vous de prendre
 contact avec l'auteur original (anglophone) à l'adresse jim.weirich@gmail.com
 ou pour des remarques sur la traduction à thomas_gratier@yahoo.fr
-comments to
 
