@@ -1013,34 +1013,36 @@ h3. Buts
 
 * Apprendre comment enlever les commits les plus récents d'une branche
 
-p. The @revert@ command of the previous section is a powerful command
-that lets us undo the effects of any commit in the repository.
-However, both the original commit and the "undoing" commit are visible
-in the branch history (using the @git log@ command).
+p. La commande @revert@ de la section précédente est une commande puissante
+qui nous laisse défaire les effets de d'importe quel commit dans le dépôt.
+Cependant, à la fois le commit original et celui qui l'annule sont visibles
+dans l'historique de la branche (en utilisant la commande @git log@).
 
-p. Often we make a commit and immediately realize that it was a
-mistake.  It would be nice to have a "take back" command that would
-allow us to pretend that the incorrect commit never happened.  The
-"take back" command would even prevent the bad commit from showing up
-the @git log@ history.  It would be as if the bad commit never
-happened.
+p. Souvent, nous faisons un commit et réalisons immédiatement que nous avons
+commis une erreur. Il pourrait être pratique d'avoir une commande de retour
+en arrière qui nous permette de faire comme si le mauvais commit n'avait jamais
+été fait. Cette commande de retour en arrière devrait aussi pouvoir prévenir
+que le mauvais commit apparaisse dans l'historique de la commande @git log@.
+Ce serait comme si le mauvais commit n'avait jamais existé.
 
-h2. The @reset@ command
+h2. La commande @reset@
 
-p. We've already seen the @reset@ command and have used it to set the
-staging area to be consistent with a given commit (we used the HEAD
-commit in our previous lab).
+p. Nous avons déjà vue la commande @reset@ et l'avons utilisé pour garder les
+fichiers en attente consistants  avec un commit donné(nous avons utilisé le
+commit HEAD dans la précédente partie).
 
-p. When given a commit reference (i.e. a hash, branch or tag name),
-the @reset@ command will ...
+p. Quand nous donnons la référence d'un commit (comme un hash, une branche ou
+nom de tag), la commande @reset@ va ...
 
-# Rewrite the current branch to point to the specified commit
-# Optionally reset the staging area to match the specified commit
-# Optionally reset the working directory to match the specified commit
+# Réécrire la branche courante jusqu'au point du commit spécifié
+# De manière optionnelle, réinitialiser la liste des fichiers en attente pour
+correspondre au commit spécifié
+# De manière optionnelle, réinitialiser le répertoire de travail pour
+correspondre au commit spécifié
 
-h2. Check Our History
+h2. Vérifions notre historique
 
-p. Let's do a quick check of our commit history.
+p. Faisons une petite vérification de de notre historique de commit.
 
 Execute:
 git hist
@@ -1050,25 +1052,25 @@ Output:
 =hist
 EOF
 
-p. We see that we have an "Oops" commit and a "Revert Oops" commit as
-the last two commits made in this branch.  Let's remove them using
-reset.
+p. Nous voyons que nous avons un commit "Oops" et un commit "Revert Oops"
+comme deux derniers commits fait dans cette branche. Maintenant enlevons-les
+en utilisant reset.
 
-h2. First, Mark this Branch
+h2. En premier, marquer cette branche
 
-p. But before we remove the commits, let's mark the latest commit with
-a tag so we can find it again.
+p. mais avant d'enlever les commits, marquons le dernier commit avec
+un tag pour que nous puissions encore le retrouver.
 
 Execute:
 git tag oops
 
-h2. Reset to Before Oops
+h2. Réinitialiser à Before Oops
 
-p. Looking at the log history (above), we see that the commit tagged
-'v1' is the commit right before the bad commit.  Let's reset the
-branch to that point.  Since that branch is tagged, we can use the tag
-name in the reset command (if it wasn't tagged, we could just use the
-hash value).
+p. En regardant àl'historique de log (au dessus), nous voyions que le commit
+taggé 'v1' est le commit juste avant le mauvais commit. Commençons par
+réinitialiser la branche à ce point. A présent que cette branche est taggé,
+nous pouvons utiliser le nom du tag dans la commande reset (si elle ne
+l'était pas, nous pourrions juste utiliser la valeur de hash).
 
 Execute:
 git reset --hard v1
@@ -1086,12 +1088,12 @@ and the Revert Oops commit are no longer in the branch.  The @--hard@
 parameter indicates that the working directory should be updated to be
 consistent with the new branch head.
 
-h2. Nothing is Ever Lost
+h2. Rien n'est jamais perdu
 
-p. But what happened to the bad commits?  It turns out that the
-commits are still in the repository.  In fact, we can still reference
-them.  Remember that at the beginning of this lab we tagged the
-reverting commit with the tag "oops".  Let's look at _all_ the commits.
+p. Mais qu'est il arrivé aux mauvais commits? En fait les commits sont
+toujours dans le dépôt. D'ailleurs, nous pouvons toujours les référencer.
+Rappelez vous qu'au début de cette partie, nous avons taggé le commit
+d'annulation avec le tag "oops". Regardons _tous_ les commits.
 
 Execute:
 git hist --all
@@ -1101,21 +1103,21 @@ Output:
 =hist3
 EOF
 
-p. Here we see that the bad commits haven't disappeared.  They are
-still in the repository.  It's just that they are no longer listed in
-the master branch.  If we hadn't tagged them, they would still be in
-the repository, but there would be no way to reference them other than
-using their hash names.  Commits that are unreferenced remain in the
-repository until the system runs the garbage collection software.
+p. Ici nous voyons que les mauvais commits n'ont pas disparus. Ils sont
+toujours dans le dépôt. C'est juste qu'ils ne sont plus listés dans la
+branche master. Si nous ne les avions pas taggés, ils seraient toujours
+dans le dépôt, mais il n'y aurait plus moyen de les référencer autrement
+que par leur nom de hash. Les commits non référencés restent dans le dépôt
+jusqu'à ce que le système lance l'utilitaire de nettoyage mémoire.
 
-h2. Dangers of Reset
+h2. Les dangers du reset
 
-p. Resets on local branches are generally safe.  Any "accidents" can
-usually be recovered from by just resetting again with the desired
-commit.
+p. Les réinitialisations sur les branches locales sont généralement sûres.
+N'importe quel accident peut être généralement récupéré en faisant un reset
+avec le commit désiré.
 
-p. However, if the branch is shared on remote repositories, resetting
-can confuse other users sharing the branch.
+p. Cependant, si la branche est partagée sur des répertoires distants, faire
+un reste peut gêner les autres utilisateurs de la branche.
 
 ----------------------------------------------------------------------
 h1. Remove the oops tag
