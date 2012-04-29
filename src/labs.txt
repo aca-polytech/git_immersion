@@ -987,7 +987,7 @@ Il était nécessaire de générer la sortie sans ouvrir l'éditeur.
 h2. Vérifier le log
 
 p. Vérifier que le log montre à la fois les commits non désirés et ceux
-de retour en arrière dans notre répertoire.
+de correction des commits non désirés dans notre répertoire.
 
 Execute:
 git hist
@@ -1120,16 +1120,16 @@ p. Cependant, si la branche est partagée sur des répertoires distants, faire
 un reste peut gêner les autres utilisateurs de la branche.
 
 ----------------------------------------------------------------------
-h1. Remove the oops tag
+h1. Enlever le tag oops
 
-h3. Goals
+h3. Buts
 
-* Remove the oops tag (housekeeping)
+* Enlever le tag oops (pour faire le ménage)
 
-h2. Removing tag oops
+h2. Enlever le tag oops
 
-p. The oops tag has served its purpose.  Let's remove it and allow the
-commits it referenced to be garbage collected.
+p. Le tag oops a atteint son but. Enlevons-le et permettons aux commits
+qu'il référence d'être nettoyer.
 
 Execute:
 git tag -d oops
@@ -1142,18 +1142,18 @@ Output:
 =hist
 EOF
 
-p. The oops tag is no longer listed in the repository.
+p. Le tag oops est désormais plus listé dans le dépôt.
 
 ----------------------------------------------------------------------
-h1. Amending Commits
+h1. Amender les commits
 
-h3. Goals
+h3. Buts
 
-* Learn how to amend an existing commit
+* APprendre comment amender un commit existant
 
-h2. Change the program then commit
+h2. Changer le programme puis commiter
 
-p. Add an author comment to the program.
+p. Ajouter un commentaire de l'auteur au programme.
 
 File: hello.rb
 # Default is World
@@ -1167,10 +1167,10 @@ Execute:
 git add hello.rb
 git commit -m "Add an author comment"
 
-h2. Oops, Should have an Email
+h2. Ah, une erreur, il faudrait un email
 
-p. After you make the commit, you realize that any good author comment
-should have an email included.  Update the hello program to include an
+p. Après avoir fait le commit, vous réalisez  que n'importe quel bon commentaire
+devrait avoir un email inclus. Mettre à jour le programme hello pour inclure un
 email.
 
 File: hello.rb
@@ -1181,10 +1181,10 @@ name = ARGV.first || "World"
 puts "Hello, #{name}!"
 EOF
 
-h2. Amend the Previous Commit
+h2. Amender le commit précédent
 
-p. We really don't want a separate commit for just the email.  Let's
-amend the previous commit to include the email change.
+p. Nous ne voulons vraiment pas un commit séparé juste pour l'email.
+Amendons le commit précédent pour inclure le changement d'email.
 
 Execute:
 git add hello.rb
@@ -1198,7 +1198,7 @@ Output:
 EOF
 
 
-h2. Review the History
+h2. Vérifier l'historique
 
 Execute:
 git hist
@@ -1208,15 +1208,15 @@ Output:
 =hist
 EOF
 
-p. We can see the original "author" commit is now gone, and it is
-replaced by the "author/email" commit.  You can achieve the same
-effect by resetting the branch back one commit and then recommitting
-the new changes.
+p. Nous pouvons voir que le commit original "auteur" est parti, et qu'il
+est remplacé par le commit "auteur/email". Vous pouvez obtenir le même
+effet en réinitialisant la branche d'un commit puis recommiter les
+nouveaux changements.
 
 ----------------------------------------------------------------------
-h1. Moving Files
+h1. Déplacer les fichiers
 
-h3. Goals
+h3. Buts
 
 * Learn how to move a file within a repository.
 
