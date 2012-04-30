@@ -2243,13 +2243,13 @@ however the convention is to use the name "origin" for
 the primary centralized repository (if there is one).
 
 ----------------------------------------------------------------------
-h1. Remote Branches
+h1. Branches distantes
 
-h3. Goals
+h3. Buts
 
-* Learn about local VS remote branches
+* Apprendre les différences entre branches locales VS branches distantes
 
-p. Let's look at the branches available in our cloned repository.
+p. Regardons dans les branches disponibles dans notre dépôt cloné.
 
 Execute:
 git branch
@@ -2259,13 +2259,13 @@ Output:
 =branch
 EOF
 
-p. That's it, only the master branch is listed.  Where is the greet
-branch?  The *git* *branch* command only lists the local branches by
-default.
+p. C'est ça, seule la  branche master est listée. Où est la branche greet
+? La commande *git* *branch* liste seulement les branches locales par
+défaut.
 
-h2. List Remote Branches
+h2. Lister les branches distantes
 
-p. Try this to see all the branches:
+p. Essayer ceci pour voir toutes les branches:
 
 Execute:
 git branch -a
@@ -2275,52 +2275,53 @@ Output:
 =branch_a
 EOF
 
-p. Git has all the commits from the original repository, but branches
-in the remote repository are not treated as local branches here.  If
-we want our own *greet* branch, we need to create it ourselves. We
-will see how to do that in a minute.
+p. Git a tous les commits du dépôt original, mais les branches
+dans le dépôt distant ne sont pas traitées comme des branches locales ici.
+Si nous voulons notre propre branche *greet*, nous devons la créer nous-même.
+Nous allons voir comment faire cela dans une minute.
 
 ----------------------------------------------------------------------
-h1. Change the Original Repository
+h1. Changer le dépôt original
 
-h3. Goals
+h3. Buts
 
-* Make some changes to the original repository so we can try to pull the changes
+* Faire quelques changements au dépôt original afin que nous puissions
+récupérer les changements
 
-h2. Make a change in the original *hello* repository
+h2. Faire un changement dans le dépôt original *hello*
 
 Execute:
 cd ../hello
 +pwd
-# (You should be in the original hello repository now)
+# (Vous devriez maintenant être dans le dépôt original hello maintenant)
 
-p{color:red}. *NOTE: Now in the _hello_ repo*
+p{color:red}. *NOTE: Maintanant dans le dépôt _hello_*
 
-p. Make the following changes to README:
+p. Faire les changements suivants à README:
 
 File: README
 This is the Hello World example from the git tutorial.
 (changed in original)
 EOF
 
-p. Now add and commit this change
+p. Maintenant ajouter et commiter ce changement
 
 Execute:
 git add README
 git commit -m "Changed README in original repo"
 
-h2. Up Next
+h2. Après
 
-p. The original repository now has later changes that are not in the
-cloned version.  Next we will pull those changes across to the cloned
-repository.
+p. Le dépôt original maintenant a des changements tardifs qui ne sont
+pas dans la version clonée. Ensuite, nous allons récupérer ces changements
+dans le dépôt cloné.
 
 ----------------------------------------------------------------------
-h1. Fetching Changes
+h1. Rapporter(fetch) les changements
 
-h3. Goals
+h3. Buts
 
-* Learn how to pull changes from a remote repository.
+* Apprendre comment rapporte les changements depuis un dépôt distant.
 
 Execute:
 cd ../cloned_hello
@@ -2330,32 +2331,31 @@ git fetch
 git hist --all
 =hist
 
-p{color:red}. *NOTE: Now in the _cloned_hello_ repo*
+p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_hello_*
 
 Output:
 =fetch
 =hist
 EOF
 
-p. At this point the repository has all the commits from the original
-repository, but they are not integrated into the the cloned
-repository's local branches.
+p. Actuellement le dépôt a tous les commits provenant de celui
+original, mais ils ne sont pas intégrés dans les branches locales
+du dépôt cloné.
 
-p. Find the "Changed README in original repo" commit in the history
-above.  Notice that the commit includes "origin/master" and
-"origin/HEAD".
+p. Trouver le commit "Changed README in original repo" dans l'historique
+ci-dessus. Notez que le commit inclut "origin/master" et "origin/HEAD".
 
-p. Now look at the "Updated Rakefile" commit.  You will see that it
-the local master branch points to this commit, not to the new commit
-that we just fetched.
+p. Maintenant regardez dans le commit "Updated Rakefile". Vous allez voir
+que sa branche locale master pointe vers ce commit, pas vers le nouveau commit
+que nous venons juste de rapporter.
 
-p. The upshot of this is that the "git fetch" command will fetch new
-commits from the remote repository, but it will not merge these
-commits into the local branches.
+p. Le résultat de ceci est que la commande "git fetch" va maintenant rapporter
+les nouveaux commits du dépôt distant, mais qu'elle ne va pas fusionner ces
+commits dans les branches locales.
 
-h2. Check the README
+h2. Vérifier le fichier README
 
-We can demonstrate that the cloned README is unchanged.
+Nous pouvons démontrer que le README cloné est inchangé.
 
 Execute:
 cat README
@@ -2365,7 +2365,7 @@ $ cat README
 This is the Hello World example from the git tutorial.
 EOF
 
-p. See, no changes.
+p. Voyez, pas de changements.
 
 ----------------------------------------------------------------------
 h1. Fusionner les changements récupérés
@@ -2408,7 +2408,7 @@ p. Après regardons comme combiner le processus fetch et merge dans
 une seule commande.
 
 ----------------------------------------------------------------------
-h1. Récupérer les changements
+h1. "Tirer" (pull) les changements
 
 h3. Buts
 
