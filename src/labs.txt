@@ -2368,13 +2368,14 @@ EOF
 p. See, no changes.
 
 ----------------------------------------------------------------------
-h1. Merging Pulled Changes
+h1. Fusionner les changements récupérés
 
-h3. Goals
+h3. Buts
 
-* Learn to get the pulled changes into the current branch and working directory.
+* Apprendre comment récupérer les changements récupérés dans la branche
+courante et dans le répertoire de travail.
 
-h2. Merge the fetched changes into local master
+h2. Fusionner les changements récupérés dans la branche master locale
 
 Execute:
 git merge origin/master
@@ -2384,9 +2385,9 @@ Output:
 =merge
 EOF
 
-h2. Check the README again
+h2. Vérfier le fichier README à nouveau
 
-p. We should see the changes now.
+p. Nous devrions voir les changements maintenant.
 
 Execute:
 cat README
@@ -2397,46 +2398,47 @@ This is the Hello World example from the git tutorial.
 (changed in original)
 EOF
 
-p. There are the changes.  Even though "git fetch" does not merge the
-changes, we can still manually merge the changes from the remote
-repository.
+p. Il y a les changements. Même si "git fetch" ne fusionne pas les
+changements, nous pouvons toujours manuellement les fusionner depuis
+le dépôt distant.
 
-h2. Up Next
+h2. Ensuite
 
-p. Next let's take a look at combining the fetch & merge process into
-a single command.
+p. Après regardons comme combiner le processus fetch et merge dans
+une seule commande.
 
 ----------------------------------------------------------------------
-h1. Pulling Changes
+h1. Récupérer les changements
 
-h3. Goals
+h3. Buts
 
-* Learn that @git pull@ is equivalent to a @git fetch@ followed by a @git merge@.
+* Apprendre que @git pull@ est équivalent à un @git fetch@ suivi par un @git merge@.
 
 h3. Discussion
 
-p. We're not going to go through the process of creating another
-change and pulling it again, but we do want you to know that doing:
+p. Nous n'allons pas repasser tout le processus de création d'un autre
+changement et le récupérer encore, mais nous voulons que vous sachiez
+que faire:
 
 pre(instructions). git pull
 
-is indeed equivalent to the two steps:
+est en fait équivalent à ces deux étapes:
 
 pre(instructions). git fetch
 git merge origin/master
 
 ----------------------------------------------------------------------
-h1. Adding a Tracking Branch
+h1. Ajouter une branche pour le suivi
 
-h3. Goals
+h3. Buts
 
-* Learn how to add a local branch that tracks a remote branch.
+* Apprendre comment ajouter une branche locale qui suit une branche distante.
 
-p. The branches starting with remotes/origin are branches from the
-original repo.  Notice that you don't have a branch called greet
-anymore, but it knows that the original repo had a greet branch.
+p. Les branches qui commencent avec remotes/origin sont les branches
+du dépôt original. Notez que nous n'avons plus une branche appelée greet,
+mais git sait que le dépôt original has une branche greet.
 
-h2. Add a local branch that tracks a remote branch.
+h2. Ajouter une branche locale qui permet de suivre une branche distante.
 
 Execute:
 git branch --track greet origin/greet
@@ -2452,7 +2454,8 @@ Output:
 =log
 EOF
 
-p. We can now see the greet branch in the branch list and in the log.
+p. Nous pouvons maintenant voir que la branche greet dans la liste des
+branches et dans le log.
 
 ----------------------------------------------------------------------
 h1. Dépôts dit "nus" (bare)
