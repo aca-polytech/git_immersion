@@ -2107,16 +2107,15 @@ repositories.  Make sure you pay attention to which repository you are
 in at each step of the following labs.
 
 ----------------------------------------------------------------------
-h1. Cloning Repositories
+h1. Cloner des dépôts
 
-h3. Goals
+h3. Buts
 
-* Learn how to make copies of repositories.
+* Apprendre comment faire des copies des dépôts.
 
-h2. Go to the work directory
+h2. Aller au répertoire de travail
 
-p. Go to the working directory and make a clone of your hello
-repository.
+p. Aller au répertoire de travail et faire un clone de votre dépôt hello.
 
 Execute:
 cd ..
@@ -2126,7 +2125,7 @@ pwd
 ls
 =ls
 
-p{color:red}. *NOTE: Now in the work directory.*
+p{color:red}. *NOTE: Maintenant dans le répertoire de travail.*
 
 Output:
 =cd
@@ -2134,12 +2133,12 @@ Output:
 =ls
 EOF
 
-p. At this point you should be in your "work" directory.  There should
-be a single repository here named "hello".
+p. A ce stade vous devriez être dans le répertoire "work". Il devrait
+avoir un seul dépôt ici nommé "hello".
 
-h2. Create a clone of the hello repository
+h2. Créer un clone du dépôt hello
 
-p. Let's make a clone of the repository.
+p. Faisons un clone du dépôt.
 
 Execute:
 git clone hello cloned_hello
@@ -2156,20 +2155,19 @@ Output:
 =ls2
 EOF
 
-p. There should now be two repositories in your work directory: the
-original "hello" repository and the newly cloned "cloned_hello"
-repository.
+p. Il devrait maintenant y avoir deux dépôts dans votre répertoire de
+travail: le dépôt original "hello" et le nouveau dépôt cloné "cloned_hello".
 
 ----------------------------------------------------------------------
-h1. Review the Cloned Repository
+h1. Examiner le dépôt cloné
 
-h3. Goals
+h3. Buts
 
-* Learn about branches on remote repositories.
+* Apprendre à propos des branches sur les dépôts distants.
 
-h2. Look at the cloned repository
+h2. Jetons un oeil au dépôt cloné
 
-p. Let's take a look at the cloned repository.
+p. Regardons un peu le dépôt cloné.
 
 Execute:
 cd cloned_hello
@@ -2182,11 +2180,11 @@ Output:
 =ls
 EOF
 
-p. You should see a list of all the files in the top level of the
-original repository (@README@, @Rakefile@ and @lib@).
+p. Vous devriez voir une liste de tous les fichiers au niveau supérieur de votre
+dépôt original (@README@, @Rakefile@ et @lib@).
 
 
-h2. Review the Repository History
+h2. Examiner l'historique du dépôt
 
 Execute:
 git hist --all
@@ -2196,24 +2194,24 @@ Output:
 =log
 EOF
 
-p. You should now see a list of the all the commits in the new
-repository, and it should (more or less) match the history of commits
-in the original repository.  The only difference should be in the
-names of the branches.
+p. Vous devriez maintenant voir une liste de tous les commits dans le
+nouveau dépôt, et il devrait (plus ou moins) correspondre à l'historique
+commits dans le dépôt original. La seule différence devrait être dans le
+nom des branches.
 
-h2. Remote branches
+h2. Branches distantes
 
-p. You should see a *master* branch (along with *HEAD*) in the history
-list.  But you will also have number of strangely named branches
-(*origin/master*, *origin/greet* and *origin/HEAD*).  We'll talk about
-them in a bit.
+p. Vous devriez voir une branche *master* (avec *HEAD*) dans la liste
+d'historique. Mais vous allez voir aussi nombres de branches nommées
+étrangement (*origin/master*, *origin/greet* et *origin/HEAD*). Nous
+allons les voir sous peu.
 
 ----------------------------------------------------------------------
-h1. What is Origin?
+h1. Qu'est ce qu'origin?
 
-h3. Goals
+h3. Buts
 
-* Learn about naming remote repositories.
+* Apprendre à propos du nommage des dépôts distants.
 
 Execute:
 git remote
@@ -2223,8 +2221,8 @@ Output:
 =remote
 EOF
 
-p. We see that the cloned repository knows about a remote repository
-named origin.  Let's see if we can get more information about origin:
+p. Nous voyons que le dépôt cloné connait un dépôt distant nommé origin.
+Voyons ce que si nous pouvons avoir plus d'informations sur origin:
 
 Execute:
 git remote show origin
@@ -2234,13 +2232,14 @@ Output:
 =show
 EOF
 
-p. Now we see that the remote repository "origin" is simply the original
-*hello* repository.  Remote repositories typically live on a separate
-machine, possibly a centralized server.  As we can see here, however,
-they can just as well point to a repository on the same machine.
-There is nothing particularly special about the name "origin",
-however the convention is to use the name "origin" for
-the primary centralized repository (if there is one).
+p. Maintenant, nous voyons que le dépôt distant "origin"est simplement le
+dépôt original *hello*. Les dépôts distants vivent typiquement sur une
+machine séparée, de manière possible aussi sur une serveur centralisé.
+Comme nous le voyons ici, cependant, ils peuvent aussi pointer vers un
+répertoire sur la même machine.
+Il n'y a rien de particulier à propos du nom "origin", cependant la
+convention est d'utiliser le nom "origin" pour le nom du dépôt centralisé
+primaire (s'il y en a un).
 
 ----------------------------------------------------------------------
 h1. Branches distantes
