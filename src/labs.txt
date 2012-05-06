@@ -1581,7 +1581,7 @@ EOF
 
 Execute:
 git add lib/bonjour.rb
-git commit -m "bonjour utiliser Faireunsalut"
+git commit -m "bonjour utilise Faireunsalut"
 
 h2. Changements pour Saluer: mettre à jour le Rakefile
 
@@ -1812,7 +1812,7 @@ h2. Fusionner master dans saluer
 p. Maintenant, retournons dans la branche saluer et essayons de fusionner master.
 
 Execute:
-git checkout greet
+git checkout saluer
 !git merge master
 
 Output:
@@ -1930,7 +1930,7 @@ EOF
 
 p. C'est un peu dur à lire, mais en regardant dans les données, nous voyons que
 le commit "Rakefile mis à jour" était le dernier commit sur la branche saluer
-avant la fusion. Réinitialisons la branche greet à ce commit.
+avant la fusion. Réinitialisons la branche saluer à ce commit.
 
 Set: hash=hash_for("Rakefile mis à jour")
 Execute:
@@ -1955,19 +1955,19 @@ Output:
 EOF
 
 ----------------------------------------------------------------------
-h1. Resetting the Master Branch
+h1. Réinitialiser la branche Master
 
-h3. Goals
+h3. Buts
 
-* Reset the master branch to the point before the conflicting commit.
+* Réinitialiser la branche master au point avant le commit conflictuel.
 
-h2. Reset the master branch
+h2. Réinitialiser la branche master
 
-p. When we added the interactive mode to the master branch, we made a
-change that conflicted with changes in the greet branch. Let's rewind
-the master branch to a point before the conflicting change.  This
-allows us to demonstrate the rebase command without worrying about
-conflicts.
+p. Quand nous avons ajouté le mode interactif dans la branche master, nous
+avons fait un changement qui rentre en conflit avec les changements dans la
+branche saluer. "Rembobinons" la branche master au point avantle changement
+conflictuel. Cela va nous permettre de faire une démonstration de la commande
+rebase sans s'inquiéter des conflits.
 
 Execute:
 git checkout master
@@ -1978,9 +1978,9 @@ Output:
 =log
 EOF
 
-p. The 'Ajout d'un LISEZMOI' commit is the one directly before the
-conflicting interactive mode.  We will reset the master branch to
-'Ajout d'un LISEZMOI' branch.
+p. Le commit 'Ajout d'un LISEZMOI' est celui qui est directement avant le mode
+interactif conflictuel. Nous allons réinitialiser la branche master au commit
+'Ajout d'un LISEZMOI'.
 
 Set: hash=hash_for("Ajout d'un LISEZMOI")
 Execute:
@@ -1988,78 +1988,80 @@ git reset --hard <hash>
 git hist --all
 =log2
 
-p. Review the log.  It should look like the repository has been wound
-back in time to the point before we merged anything.
+p. Examiner le log. Cela devrait ressembler comme si on avait rembobiné
+le dépôt dans le temps au point avant la fusion de quoi que ce soit.
 
 Output:
 =log2
 EOF
 
 ----------------------------------------------------------------------
-h1. Rebasing
+h1. Rebaser
 
-h3. Goals
+h3. Buts
 
-* Use the rebase command rather than the merge command.
+* Utiliser la commande rebase plutôt que la commande merge.
 
-p. Ok, we are back in time before the first merge and we want to get
-the changes in master into our greet branch.
+p. Ok, nous sommes maintenant revenu dans le temps avant la première fusion et
+nous voulons obtenir les changements de master dans notre branche saluer.
 
-p. This time we will use the rebase command instead of the merge
-command to bring in the changes from the master branch.
+p. Cette fois nous allons utiliser la commande rebase à la place de la commande
+merge pour apporter les changements depuis la branche master.
 
 Execute:
-git checkout greet
+git checkout saluer
 git rebase master
 git hist
 =log
 
 Output:
-$ go greet
-Switched to branch 'greet'
+$ go saluer
+Switched to branch 'saluer'
 $
 $ git rebase master
 First, rewinding head to replay your work on top of it...
-Applying: added Greeter class
-Applying: bonjour uses Greeter
-Applying: updated Rakefile
+Applying: Ajout de la classe Faireunsalut
+Applying: bonjour utilise Faireunsalut
+Applying: Rakefile mis à jour
 $
 =log
 EOF
 
 h2. Merge VS Rebase
 
-p. The final result of the rebase is very similar to the merge.  The
-greet branch now contains all of its changes, as well as all the
-changes from the master branch.  However, the commit tree is quite
-different.  The commit tree for the greet branch has been rewritten so
-that the master branch is a part of the commit history.  This leaves
-the chain of commits linear and much easier to read.
+p. Le résultat final de rebase est très similaire à celui de merge. La branche
+saluer contient maintenant tous ses changements, aussi bien que tous ceux de la
+branche master. Cependant, l'arbre de commit est assez différent. L'arbre de
+commit pour la branche saluer a été réécrit de manière à ce que la branche
+master soit une partie de l'historique de commit. Cela laisse une chaîne de
+commit linéaire et beaucoup plus facile à lire.
 
-h2. When to Rebase, When to Merge?
+h2. Quand faire un Rebase, quand faire un Merge?
 
-p. Don't use rebase ...
+p. Ne pas utiliser rebase quand ...
 
-# If the branch is public and shared with others.  Rewriting publicly shared branches will tend to screw up other members of the team.
-# When the _exact_ history of the commit branch is important (since rebase rewrites the commit history).
+# Si la branche est publique et partagée avec d'autres. Réécrire publiquement des
+branches partagées risque surtout "d'emmerder" les autres membres de votre équipe.
+# Quand l'historique _exacte_ de votre branche de commit est importante (étant
+donné que rebase réécrit l'historique de commit).
 
-p. Given the above guidelines, I tend to use rebase for short-lived,
-local branches and merge for branches in the public repository.
+p. En suivant les règles ci-dessus, je tend à utiliser rebase pour des branches
+locales à usage court et merge pour les branches partagées dans le dépôt public
 
 ----------------------------------------------------------------------
 h1. Fusionner dans la branche master
 
 h3. Buts
 
-* Nous avons gardé notre branche greet à jour avec master (via rebase),
-maintenant, il est temps de fusionner les changements de greet dans la
+* Nous avons gardé notre branche saluer à jour avec master (via rebase),
+maintenant, il est temps de fusionner les changements de saluer dans la
 branche master.
 
-h2. Fusionner greet dans master
+h2. Fusionner saluer dans master
 
 Execute:
 git checkout master
-git merge greet
+git merge saluer
 =merge
 
 Output:
@@ -2069,12 +2071,12 @@ $
 =merge
 EOF
 
-p. Because the head of master is a direct ancestor of the head of the
-greet branch, git is able to do a fast-forward merge.  When
-fast-forwarding, the branch pointer is simply moved forward to point
-to the same commit as the greeter branch.
+p. Comme le head de master est une ancêtre direct du head de la branche
+saluer, git est capable de faire un merge en "avance rapide". Quand
+on fait l'avance rapide, le pointeur de la branche est simplement déplacé en
+avant pour pointer vers le même commit que pour la branche faireunsalut.
 
-p. There will never be conflicts in a fast-forward merge.
+p. Il n'y aura jamais de conflits dans un merge en "avance rapide".
 
 h2. Examiner les logs
 
@@ -2086,7 +2088,7 @@ Output:
 =log
 EOF
 
-p. Les branches greet et master sont maintenant identiques.
+p. Les branches saluer et master sont maintenant identiques.
 
 ----------------------------------------------------------------------
 h1. Dépôts multiples
@@ -2210,7 +2212,7 @@ h2. Branches distantes
 
 p. Vous devriez voir une branche *master* (avec *HEAD*) dans la liste
 d'historique. Mais vous allez voir aussi nombres de branches nommées
-étrangement (*origin/master*, *origin/greet* et *origin/HEAD*). Nous
+étrangement (*origin/master*, *origin/saluer* et *origin/HEAD*). Nous
 allons les voir sous peu.
 
 ----------------------------------------------------------------------
@@ -2265,7 +2267,7 @@ Output:
 =branch
 EOF
 
-p. C'est ça, seule la  branche master est listée. Où est la branche greet
+p. C'est ça, seule la  branche master est listée. Où est la branche saluer
 ? La commande *git* *branch* liste seulement les branches locales par
 défaut.
 
@@ -2283,7 +2285,7 @@ EOF
 
 p. Git a tous les commits du dépôt original, mais les branches
 dans le dépôt distant ne sont pas traitées comme des branches locales ici.
-Si nous voulons notre propre branche *greet*, nous devons la créer nous-même.
+Si nous voulons notre propre branche *saluer*, nous devons la créer nous-même.
 Nous allons voir comment faire cela dans une minute.
 
 ----------------------------------------------------------------------
@@ -2441,13 +2443,13 @@ h3. Buts
 * Apprendre comment ajouter une branche locale qui suit une branche distante.
 
 p. Les branches qui commencent avec remotes/origin sont les branches
-du dépôt original. Notez que nous n'avons plus une branche appelée greet,
-mais git sait que le dépôt original has une branche greet.
+du dépôt original. Notez que nous n'avons plus une branche appelée saluer,
+mais git sait que le dépôt original has une branche saluer.
 
 h2. Ajouter une branche locale qui permet de suivre une branche distante.
 
 Execute:
-git branch --track greet origin/greet
+git branch --track saluer origin/saluer
 =branch_track
 git branch -a
 =branch_a
@@ -2460,7 +2462,7 @@ Output:
 =log
 EOF
 
-p. Nous pouvons maintenant voir que la branche greet dans la liste des
+p. Nous pouvons maintenant voir que la branche saluer dans la liste des
 branches et dans le log.
 
 ----------------------------------------------------------------------
