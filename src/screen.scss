@@ -267,6 +267,20 @@ html, body {
   }
 }
 
+#translator_notes {
+  font-family: italic;
+  font-weight:bold;
+}
+
+#translator_contact {
+    a {
+    padding         : 3px 16px 5px 16px;
+    color           : #fff;
+    text-decoration : none;
+    background      : #85ac39;
+    @include border_radius(3px);
+    }
+}
 
 /* Index: Other Resources
 ------------------------------------------------------------ */
@@ -413,7 +427,7 @@ h4 {
   @include border_radius(3px 0 0 3px); }
 
 .blur h4 {
-  color       : transparent; 
+  color       : transparent;
   text-shadow : 0 0 2px #fff;
   background  : url(label_blur.png) no-repeat 100% 0; }
 
@@ -768,3 +782,4 @@ ol {
 
   .file { padding-left: 88px; }
 }
+

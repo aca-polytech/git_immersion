@@ -370,6 +370,19 @@ html, body {
   border-radius: 3px;
 }
 
+#translator_notes {
+  font-family: italic;
+  font-weight:bold;
+}
+
+#translator_contact a {
+    padding         : 3px 16px 5px 16px;
+    color           : #fff;
+    text-decoration : none;
+    background      : #85AC39;
+    @include border_radius(3px);
+}
+
 /* Index: Other Resources
 ------------------------------------------------------------ */
 #other_resources {
@@ -958,3 +971,4 @@ ol {
     padding-left: 88px;
   }
 }
+

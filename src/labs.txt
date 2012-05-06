@@ -276,7 +276,7 @@ p. Ainsi commitons maintenant et vérifions le status.
 
 Execute:
 -git commit
-+git commit -m "Using ARGV"
++git commit -m "Utilisation de ARGV"
 
 p. Vous devriez voir la chose suivante dans votre éditeur:
 
@@ -292,13 +292,13 @@ Output:
 #
 EOF
 
-p. Sur la première ligne, entrer le commentaire: "Using ARGV". Sauver le
+p. Sur la première ligne, entrer le commentaire: "Utilisation de ARGV". Sauver le
 fichier et sortir de l'éditeur. Vous devriez voir ...
 
 Output:
 git commit
 Waiting for Emacs...
-[master 569aa96] Using ARGV
+[master 569aa96] Utilisation de ARGV
  1 files changed, 1 insertions(+), 1 deletions(-)
 EOF
 
@@ -348,9 +348,9 @@ p. Changer le programme "Bonjour, Monde" pour avoir une valeur par défaut si un
 argument est passé en ligne en commande s'il n'est pas fourni.
 
 File: bonjour.rb
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 h2. Rajouter ce changement
@@ -365,10 +365,10 @@ h2. Deuxième changement: ajouter une commentaire
 p. Maintenant ajouter un commentaire au programme "Bonjour, Monde".
 
 File: bonjour.rb
-# Default is "Monde"
-name = ARGV.first || "Monde"
+# L'argument par défaut est Monde
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 h2. Vérifier le status courant
@@ -810,9 +810,9 @@ Changer bonjour.rb pour avoir un mauvais commentaire.
 
 File: bonjour.rb
 # Ceci est un mauvais commentaire. Nous voulons l'annuler.
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 h2. Vérifier le status
@@ -865,9 +865,9 @@ p. Modifier le fichier @bonjour.rb@ pour avoir un mauvais commentaire
 
 File: bonjour.rb
 # C'est un commentaire non désiré mais déjà déclaré
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 p. Et maintenant continuer et déclarer le fichier.
@@ -949,9 +949,9 @@ p. Changer le fichier @bonjour.rb@ de la manière suivante.
 
 File: bonjour.rb
 # C'est un changement non voulu mais déjà commité
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 Execute:
@@ -1158,9 +1158,9 @@ p. Ajouter un commentaire de l'auteur au programme.
 File: bonjour.rb
 # L'argument par défaut est Monde
 # Auteur: Jim Weirich
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 Execute:
@@ -1176,9 +1176,9 @@ email.
 File: bonjour.rb
 # L'argument par défaut est Monde
 # Auteur: Jim Weirich (jim@somewhere.com)
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-puts "Bonjour, #{name}!"
+puts "Bonjour, #{nom}!"
 EOF
 
 h2. Amender le commit précédent
@@ -1573,9 +1573,9 @@ File: lib/bonjour.rb
 require 'faireunsalut'
 
 # L'argument par défaut est Monde
-name = ARGV.first || "Monde"
+nom = ARGV.first || "Monde"
 
-faireunsalut = Faireunsalut.new(name)
+faireunsalut = Faireunsalut.new(nom)
 puts faireunsalut.saluer
 EOF
 
@@ -1666,24 +1666,24 @@ h3. Buts
 sont potentiellement conflictuels).
 
 p. Pendant que vous changiez la branche saluer, quelqu'un d'autre a décidé de
-mettre à jour la branche master. Il a ajouté un fichier README.
+mettre à jour la branche master. Il a ajouté un fichier LISEZMOI.
 
 h2. Basculer dans la branche master.
 
 Execute:
 git checkout master
 
-h2. Créer le README.
+h2. Créer le LISEZMOI.
 
-File: README
+File: LISEZMOI
 C'est un exemple de Bonjour Monde pour le tutoriel git.
 EOF
 
-h2. Commiter le README dans master.
+h2. Commiter le LISEZMOI dans master.
 
 Execute:
-git add README
-git commit -m "Ajout d'un README"
+git add LISEZMOI
+git commit -m "Ajout d'un LISEZMOI"
 
 ----------------------------------------------------------------------
 h1. Visualiser les branches qui divergent
@@ -1772,9 +1772,9 @@ git checkout master
 
 File: lib/bonjour.rb
 puts "Quelle est votre nom?"
-my_name = gets.strip
+mon_nom = gets.strip
 
-puts "Bonjour, #{my_name}!"
+puts "Bonjour, #{mon_nom}!"
 EOF
 
 Execute:
@@ -1791,7 +1791,7 @@ Output:
 =log
 EOF
 
-p. La branche master au commit "Ajout d'un README" a été fusionné dans la
+p. La branche master au commit "Ajout d'un LISEZMOI" a été fusionnée dans la
 branche saluer, mais il y a maintenant un commit additionnel sur master qui
 n'a pas été fusionné dans saluer.
 
@@ -1816,8 +1816,8 @@ git checkout greet
 !git merge master
 
 Output:
-$ git checkout greet
-Switched to branch 'greet'
+$ git checkout saluer
+Switched to branch 'saluer'
 $ git merge master
 Auto-merging lib/bonjour.rb
 CONFLICT (content): Merge conflict in lib/bonjour.rb
@@ -1839,9 +1839,9 @@ puts faireunsalut.saluer
 # L'argument par défaut est Monde
 
 puts "Quelle est votre nom?"
-my_name = gets.strip
+mon_nom = gets.strip
 
-puts "Bonjour, #{my_name}!"
+puts "Bonjour, #{mon_nom}!"
 >>>>>>> master
 EOF
 
@@ -1857,9 +1857,9 @@ File: lib/bonjour.rb
 require 'faireunsalut'
 
 puts "Quelle est votre nom?"
-my_name = gets.strip
+mon_nom = gets.strip
 
-faireunsalut = Faireunsalut.new(my_name)
+faireunsalut = Faireunsalut.new(mon_nom)
 puts faireunsalut.saluer
 EOF
 
@@ -1884,38 +1884,38 @@ Voir "http://onestepback.org/index.cgi/Tech/Git/UsingP4MergeWithGit.red":http://
 pour une description de l'utilisation de l'outil de fusion Perforce avec git.
 
 ----------------------------------------------------------------------
-h1. Rebasing VS Merging
+h1. Rebase VS Fusion (merge)
 
-h3. Goals
+h3. Buts
 
-* Learn the differences between rebasing and merging.
+* Apprendre la différence entre rebaser et fusionner.
 
 h3. Discussion
 
-p. Let's explore the differences between merging and rebasing.  In
-order to do so, we need to rewind the repository back in time before
-the first merge, and then redo the same steps, but using rebasing
-rather than merging.
+p. Explorons les différences entre fusion et rebase. Pour faire
+ceci, nous devons "rembobiner" le dépôt dans le temps avant de faire
+le premier merge, et ensuite refaire les mêmes étapes, mais en utilisant
+le rebase plutôt que la fusion.
 
-p. We will make use the of the @reset@ command to wind the branches
-back in time.
+p. Nous allons utiliser la commande @reset@ pour "rembobiner" les branches
+dans le temps.
 
 ----------------------------------------------------------------------
-h1. Resetting the Greet Branch
+h1. Réinitialiser la branche Saluer
 
-h3. Goals
+h3. Buts
 
-* Reset the greet branch to the point before the first merge.
+* Réinitialiser la branche saluer au point vant la première fusion.
 
-h2. Reset the greet branch
+h2. Réinitialiser la branche saluer
 
-p. Let's go back in time on the greet branch to the point _before_ we
-merged master onto it.  We can *reset* a branch to any commit we want.
-Essentially this is modifying the branch pointer to point to anywhere
-in the commit tree.
+p. Revenons dans le temps sur la branche saluer à la phase _avant_ que nous
+fusionnons master dedans. Nous pouvons *réintialiser* une branche à n'importe
+quel commit souhaité. Essentiellement, c'est une modification du pointeur de
+la branche pour qu'il pointe n'importe où dans l'arbre de commit.
 
-p. In this case we want to back greet up to the point prior to the
-merge with master.  We need to find the last commit before the merge.
+p. Dans ce cas, nous voulons remettre saluer au point avant le merge avec
+master. Nous devons trouver le dernier commit avant la fusion.
 
 Execute:
 git checkout saluer
@@ -1928,9 +1928,9 @@ Output:
 =log
 EOF
 
-p. That's a bit hard to read, but looking at the data we see that the
-"Updated Rakefile" commit was the last commit on the greet branch
-before merging.  Let's reset the greet branch to that commit.
+p. C'est un peu dur à lire, mais en regardant dans les données, nous voyons que
+le commit "Rakefile mis à jour" était le dernier commit sur la branche saluer
+avant la fusion. Réinitialisons la branche greet à ce commit.
 
 Set: hash=hash_for("Rakefile mis à jour")
 Execute:
@@ -1941,10 +1941,10 @@ Output:
 =reset
 EOF
 
-h2. Check the branch.
+h2. Vérifier la branche.
 
-p. Look at the log for the greet branch.  We no longer have the merge
-commits in its history.
+p. Regardez dans le log de la branche saluer. Nous n'avons plus les commits de
+fusion dans l'historique.
 
 Execute:
 git hist --all
@@ -1978,11 +1978,11 @@ Output:
 =log
 EOF
 
-p. The 'Added README' commit is the one directly before the
+p. The 'Ajout d'un LISEZMOI' commit is the one directly before the
 conflicting interactive mode.  We will reset the master branch to
-'Added README' branch.
+'Ajout d'un LISEZMOI' branch.
 
-Set: hash=hash_for("Ajout d'un README")
+Set: hash=hash_for("Ajout d'un LISEZMOI")
 Execute:
 git reset --hard <hash>
 git hist --all
@@ -2097,7 +2097,7 @@ supplémentaires peuvent être stockés localement, ou peuvent être récupéré
 à travers une connexion réseau.
 
 p. Dans la section suivante, nous allons créer une nouveau dépôt appelé
-"cloned_bonjour". Nous allons vous montrer comment déplacer des changements
+"clone_de_bonjour". Nous allons vous montrer comment déplacer des changements
 d'un dépôt à un autre, et comment gérer les conflits qui se posent entre
 deux dépôts.
 
@@ -2148,11 +2148,11 @@ h2. Créer un clone du dépôt bonjour
 p. Faisons un clone du dépôt.
 
 Execute:
-git clone bonjour cloned_bonjour
+git clone bonjour clone_de_bonjour
 =clone
 ls
 =ls2
-+cd cloned_bonjour
++cd clone_de_bonjour
 +git config user.name "Jim Weirich"
 +git config user.email "jim (at) edgecase.com"
 +cd ..
@@ -2163,7 +2163,7 @@ Output:
 EOF
 
 p. Il devrait maintenant y avoir deux dépôts dans votre répertoire de
-travail: le dépôt original "bonjour" et le nouveau dépôt cloné "cloned_bonjour".
+travail: le dépôt original "bonjour" et le nouveau dépôt cloné "clone_de_bonjour".
 
 ----------------------------------------------------------------------
 h1. Examiner le dépôt cloné
@@ -2177,7 +2177,7 @@ h2. Jetons un oeil au dépôt cloné
 p. Regardons un peu le dépôt cloné.
 
 Execute:
-cd cloned_bonjour
+cd clone_de_bonjour
 =cd
 ls
 =ls
@@ -2188,7 +2188,7 @@ Output:
 EOF
 
 p. Vous devriez voir une liste de tous les fichiers au niveau supérieur de votre
-dépôt original (@README@, @Rakefile@ et @lib@).
+dépôt original (@LISEZMOI@, @Rakefile@ et @lib@).
 
 
 h2. Examiner l'historique du dépôt
@@ -2303,18 +2303,18 @@ cd ../bonjour
 
 p{color:red}. *NOTE: Maintanant dans le dépôt _bonjour_*
 
-p. Faire les changements suivants à README:
+p. Faire les changements suivants à LISEZMOI:
 
-File: README
-This is the Bonjour Monde example from the git tutorial.
-(changed in original)
+File: LISEZMOI
+C'est un exemple de Bonjour Monde pour le tutoriel git.
+(Changé dans l'original)
 EOF
 
 p. Maintenant ajouter et commiter ce changement
 
 Execute:
-git add README
-git commit -m "Changed README in original repo"
+git add LISEZMOI
+git commit -m "Changement de LISEZMOI dans le dépôt original"
 
 h2. Après
 
@@ -2323,21 +2323,21 @@ pas dans la version clonée. Ensuite, nous allons récupérer ces changements
 dans le dépôt cloné.
 
 ----------------------------------------------------------------------
-h1. Rapporter(fetch) les changements
+h1. Rapporter (fetch) les changements
 
 h3. Buts
 
-* Apprendre comment rapporte les changements depuis un dépôt distant.
+* Apprendre comment rapporter les changements depuis un dépôt distant.
 
 Execute:
-cd ../cloned_bonjour
+cd ../clone_de_bonjour
 +pwd
 git fetch
 =fetch
 git hist --all
 =hist
 
-p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_bonjour_*
+p{color:red}. *NOTE: Maintenant dans le dépôt _clone_de_bonjour_*
 
 Output:
 =fetch
@@ -2348,8 +2348,8 @@ p. Actuellement le dépôt a tous les commits provenant de celui
 original, mais ils ne sont pas intégrés dans les branches locales
 du dépôt cloné.
 
-p. Trouver le commit "Changed README in original repo" dans l'historique
-ci-dessus. Notez que le commit inclut "origin/master" et "origin/HEAD".
+p. Trouver le commit "Changement de LISEZMOI dans le dépôt original" dans
+l'historique ci-dessus. Notez que le commit inclut "origin/master" et "origin/HEAD".
 
 p. Maintenant regardez dans le commit "Updated Rakefile". Vous allez voir
 que sa branche locale master pointe vers ce commit, pas vers le nouveau commit
@@ -2359,16 +2359,16 @@ p. Le résultat de ceci est que la commande "git fetch" va maintenant rapporter
 les nouveaux commits du dépôt distant, mais qu'elle ne va pas fusionner ces
 commits dans les branches locales.
 
-h2. Vérifier le fichier README
+h2. Vérifier le fichier LISEZMOI
 
-Nous pouvons démontrer que le README cloné est inchangé.
+Nous pouvons démontrer que le LISEZMOI cloné est inchangé.
 
 Execute:
-cat README
+cat LISEZMOI
 
 Output:
-$ cat README
-This is the Bonjour Monde example from the git tutorial.
+$ cat LISEZMOI
+C'est un exemple de Bonjour Monde pour le tutoriel git.
 EOF
 
 p. Voyez, pas de changements.
@@ -2391,17 +2391,17 @@ Output:
 =merge
 EOF
 
-h2. Vérfier le fichier README à nouveau
+h2. Vérfier le fichier LISEZMOI à nouveau
 
 p. Nous devrions voir les changements maintenant.
 
 Execute:
-cat README
+cat LISEZMOI
 
 Output:
-$ cat README
-This is the Bonjour Monde example from the git tutorial.
-(changed in original)
+$ cat LISEZMOI
+C'est un exemple de Bonjour Monde pour le tutoriel git.
+(Changé dans l'original)
 EOF
 
 p. Il y a les changements. Même si "git fetch" ne fusionne pas les
@@ -2508,7 +2508,7 @@ p. Ajoutons le dépôt bonjour.git à notre dépôt d'origine.
 Execute:
 cd bonjour
 +pwd
-git remote add shared ../bonjour.git
+git remote add partager ../bonjour.git
 
 p{color:red}. *NOTE: Maintenant dans le dépôt +bonjour+.*
 
@@ -2524,26 +2524,26 @@ de serveur réseau, il est difficile de se rendre dans le dépôt et de récupé
 les changements. Ainsi nous avons besoins d'envoyer nos changements dans les
 autres dépôts.
 
-p. Commençons par créer un changement à envoyer. Editer le fichier README
+p. Commençons par créer un changement à envoyer. Editer le fichier LISEZMOI
 et le commiter
 
-File: README
-This is the Bonjour Monde example from the git tutorial.
-(Changed in the original and pushed to shared)
+File: LISEZMOI
+C'est un exemple de Bonjour Monde pour le tutoriel git.
+(Changé dans l'original et envoyé dans partager)
 EOF
 
 Execute:
 git checkout master
-git add README
-git commit -m "Added shared comment to readme"
+git add LISEZMOI
+git commit -m "Ajout du commentaire partagé à lisezmoi"
 
 p. Maintenant envoyer le changement à notre dépôt partagé.
 
 Execute:
-git push shared master
+git push partager master
 =push
 
-p. _shared_ est le nom du dépôt qui reçoit les changements que nous
+p. _partager_ est le nom du dépôt qui reçoit les changements que nous
 envoyons. (Souvenez vous, nous l'avons ajouté comme distant dans la
 précédente partie du tutoriel.)
 
@@ -2568,18 +2568,18 @@ p. Aller rapidement dans le clône du dépôt et maintenant récupérons rapidem
 les changements qu'on vient juste d'effectuer sur le dépôt partagé.
 
 Execute:
-cd ../cloned_bonjour
+cd ../clone_de_bonjour
 +pwd
 
-p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_bonjour_.*
+p{color:red}. *NOTE: Maintenant dans le dépôt _clone_de_bonjour_.*
 
 p. Continuer avec ...
 
 Execute:
-git remote add shared ../bonjour.git
-git branch --track shared master
-git pull shared master
-cat README
+git remote add partager ../bonjour.git
+git branch --track partager master
+git pull partager master
+cat LISEZMOI
 
 ----------------------------------------------------------------------
 h1. Héberger vos dépôts Git
