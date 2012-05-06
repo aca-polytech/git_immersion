@@ -175,9 +175,9 @@ devoir faire par la suite. Si vous voulez ajouter ces changements au répertoire
 alors utiliser la commande @git add@. Dans le cas contraire, la commande
 @git checkout@ peut être utilisé pour annuler les changements.
 
-h2. Up Next
+h2. Et après
 
-p. Let's stage the change.
+p. Déclarons les changements.
 
 ----------------------------------------------------------------------
 h1. Déclarer les changements
