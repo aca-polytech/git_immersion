@@ -1,17 +1,18 @@
 <nav id="pager">
   <% if lab.next -%>
-    <a id="arrow_next" class="arrow" href="<%= lab.next.filename %>">Next</a>
+    <a id="arrow_next" class="arrow" href="<%= lab.next.filename %>">Suivant</a>
   <% else -%>
-    <span id="arrow_next" class="arrow">Next</span>
+    <span id="arrow_next" class="arrow">Suivant</span>
   <% end -%>
 
   <% if lab.prev -%>
-    <a id="arrow_previous" class="arrow" href="<%= lab.prev.filename %>">Previous</a>
+    <a id="arrow_previous" class="arrow" href="<%= lab.prev.filename %>">Précédent</a>
   <% else -%>
-    <span id="arrow_previous" class="arrow">Previous</span>
+    <span id="arrow_previous" class="arrow">Précédent</span>
   <% end -%>
 
-  <a id="table_of_contents_link" href="#">Table of Contents</a>
-  <a id="bookmark_link"><span id="bookmark"></span>Bookmark this lab</a>
+  <a id="table_of_contents_link" href="#">Table des matières</a>
+  <a id="bookmark_link"><span id="bookmark"></span>Mettre en favori cette partie</a>
   <a id="edgecase_link" href="http://edgecase.com" target="_blank">EdgeCase</a>
 </nav>
+
