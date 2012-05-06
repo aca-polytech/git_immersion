@@ -42,7 +42,7 @@ h2. Obtenir le paquet pour le tutoriel.
 
 p. Télécharger le paquet pour le tutoriel depuis:
 
-* L'URL "http://gitimmersion.com/git_tutorial.zip":http://gitimmersion.com/git_tutorial.zip
+* L'URL "http://gitimmersion.fr/git_tutorial.zip":http://gitimmersion.fr/git_tutorial.zip
 
 h2. Dézipper le tutoriel
 
