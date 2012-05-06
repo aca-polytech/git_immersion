@@ -14,8 +14,8 @@ Si vous avez déjà configuré git, vous pouvez passez plus bas à la partie sur
 les fins de ligne.
 
 execute:
-git config --global user.name "Your Name"
-git config --global user.email "your_email@whatever.com"
+git config --global user.name "Votre nom"
+git config --global user.email "votre_email@votredomaine.com"
 
 h2. Paramétrer les préférences du type de fin de lignes
 
@@ -62,18 +62,18 @@ h3. Buts
 
 * Apprendre à créer un dépôt git à partir de rien.
 
-h2. Créer un programme "Hello, World"
+h2. Créer un programme "Bonjour, Monde"
 
 p. En commençant dans le répertoire de travail vide, créer un répertoire vide
-nommé "hello", ensuite créer un fichier nommé @hello.rb@ avec le contenu
+nommé "bonjour", ensuite créer un fichier nommé @bonjour.rb@ avec le contenu
 ci-dessous.
 
 Execute:
-mkdir hello
-cd hello
+mkdir bonjour
+cd bonjour
 
-File: hello.rb
-puts "Hello, World"
+File: bonjour.rb
+puts "Bonjour, Monde"
 EOF
 
 h2. Créer le dépôt
@@ -93,12 +93,12 @@ EOF
 
 h2. Ajouter le programme au dépôt
 
-Maintenant ajoutons le fichier du programme "Hello, World" au dépôt.
+Maintenant ajoutons le fichier du programme "Bonjour, Monde" au dépôt.
 
 Execute:
-git add hello.rb
+git add bonjour.rb
 =add
-git commit -m "First Commit"
+git commit -m "Mon premier commit"
 =commit
 
 p. Vous devriez voir ...
@@ -144,13 +144,13 @@ h3. Buts
 
 * Apprendre comment suivre l'état du répertoire de travail
 
-h2. Changer le programme "Hello, World".
+h2. Changer le programme "Bonjour, Monde".
 
-p. Il est temps de changer notre programme hello pour lui passer un argument
+p. Il est temps de changer notre programme bonjour pour lui passer un argument
 depuis la ligne de commande. Changer le fichier pour qu'il soit:
 
-File: hello.rb
-puts "Hello, #{ARGV.first}!"
+File: bonjour.rb
+puts "Bonjour, #{ARGV.first}!"
 EOF
 
 h2. Vérifier le status
@@ -167,7 +167,7 @@ Output:
 =status
 EOF
 
-p. La première chose à constater est que git sait que le fichier @hello.rb@
+p. La première chose à constater est que git sait que le fichier @bonjour.rb@
 a été modifié, mais que git n'a pas encore averti de ces changements.
 
 p. Noter également que le message de status vous guide sur ce que vous alles
@@ -191,7 +191,7 @@ h2. Ajouter les changements
 p. Maintenant indiquer à git de prendre en compte les changements déclarés. Vérifier le status
 
 Execute:
-git add hello.rb
+git add bonjour.rb
 =add
 git status
 =status
@@ -203,14 +203,14 @@ Output:
 =status
 EOF
 
-p. Le changement sur le fichier @hello.rb@ a été déclaré. Cela signifie
+p. Le changement sur le fichier @bonjour.rb@ a été déclaré. Cela signifie
 que git est informé du changement, mais le changement n'a pas pas encore
 eté enregistré de manière _permanente_ dans le dépôt. La prochaine opération
 de commit inclura les changements qui ont été déclarés.
 
 p. Si vous décidez que vous _ne_ voulez pas commiter ce changement après tout,
 la commande de status vous rappelle que la commande @git reset@ peut être
-utilisée pour annuler cet déclaration de ce changement.
+utilisée pour annuler la déclaration de ce changement.
 
 ----------------------------------------------------------------------
 h1. Déclarer et commiter
@@ -221,24 +221,24 @@ d'utiliser un gestionnaire de version.
 Vous pouvez continuer à faire des changements dans votre répertoire de travail
 et ensuite, lorsque vous devez commencer à utiliser le gestion de version, git
 vous permet d'enregistrer vos changements dans de petits commits qui
-enregistrent exacteemnt ce que vous avez fait.
+enregistrent exactement ce que vous avez fait.
 
 p. Par exemple, supposons que vous éditiez trois fichiers (@a.rb@, @b.rb@, et
 @c.rb@). Maintenant vous voulez commiter tous les changements, mais vous voulez
-que les changements dans @a.rb@ et @b.rb@ soit dans un seul commit et que ceux
-dans @c.rb@uuu sans rapport logique avec les deux premiers fichiers soit dans
- une commit séparé.
+que les changements dans @a.rb@ et @b.rb@ soient dans un seul commit et que ceux
+dans @c.rb@uuu sans rapport logique avec les deux premiers fichiers soient dans
+un commit séparé.
 
 p. Vous pourriez faire:
 
 pre(instructions).
 git add a.rb
 git add b.rb
-git commit -m "Changes for a and b"
+git commit -m "Changements pour a et b"
 
 pre(instructions).
 git add c.rb
-git commit -m "Unrelated change to c"
+git commit -m "Changement sans rapport sur c"
 
 p. En séparant la déclaration du commit, vous avez la possibilité de
 choisir précisément et facilement ce que vous ajoutez à chaque commit.
@@ -256,8 +256,8 @@ p. Ok, assez avec la déclaration.  Maintenant commitons ce que nous avons
 déclaré dans le répertoire.
 
 p. Quand vous avez utilisé @git commit@ précédemment pour commiter la version
-initiale du fichier @hello.rb@ dans le dépôt, vous avez inclus l'indicateur @-m@
-qui renvoie un commentaire dans la ligend de commande. La commande de commit va
+initiale du fichier @bonjour.rb@ dans le dépôt, vous avez inclus l'indicateur @-m@
+qui renvoie un commentaire dans la légende de la commande. La commande de commit va
 vous permettre d'éditer un commentaire de manière interactive pour le commit.
 Essayons maintenant.
 
@@ -278,7 +278,7 @@ Execute:
 -git commit
 +git commit -m "Using ARGV"
 
-p. You should see the following in your editor:
+p. Vous devriez voir la chose suivante dans votre éditeur:
 
 Output:
 |
@@ -288,11 +288,11 @@ Output:
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
-#	modified:   hello.rb
+#	modified:   bonjour.rb
 #
 EOF
 
-p. Sur la première ligne, entrer le commentaire: "Using ARGV".  Sauver le
+p. Sur la première ligne, entrer le commentaire: "Using ARGV". Sauver le
 fichier et sortir de l'éditeur. Vous devriez voir ...
 
 Output:
@@ -304,8 +304,7 @@ EOF
 
 p. La ligne "Waiting for Emacs..." vient du programme @emacsclient@ qui envoie
 le fichier au programme dmacs et attend que le fichier soit fermé. Le reste de
-la sortie est constitué des messages standards pour un commmit
-messages.
+la sortie est constitué des messages standards pour un commmit.
 
 h2. Vérifier le status
 
@@ -345,13 +344,13 @@ partie.
 
 h2. Premier changement: autoriser un nom de fichier par défaut
 
-p. Changer le programme "Hello, World" pour avoir une valeur par défault si un
-argument est passé en ligne en commande si il n'est pas supplié.
+p. Changer le programme "Bonjour, Monde" pour avoir une valeur par défaut si un
+argument est passé en ligne en commande s'il n'est pas fourni.
 
-File: hello.rb
-name = ARGV.first || "World"
+File: bonjour.rb
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 h2. Rajouter ce changement
@@ -359,17 +358,17 @@ h2. Rajouter ce changement
 p. Maintenant ajouter ce changement dans la déclaration des fichiers de git.
 
 Execute:
-git add hello.rb
+git add bonjour.rb
 
 h2. Deuxième changement: ajouter une commentaire
 
-p. Maintenant ajouter un commentaire au programme "Hello, World".
+p. Maintenant ajouter un commentaire au programme "Bonjour, Monde".
 
-File: hello.rb
-# Default is "World"
-name = ARGV.first || "World"
+File: bonjour.rb
+# Default is "Monde"
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 h2. Vérifier le status courant
@@ -384,8 +383,8 @@ Output:
 =status
 EOF
 
-p. Remarquer comment @hello.rb@ est listé deux fois dans le status. Le premier
-changement (ajouter une valeur par défaut) est déclarée et est prête à être commité.
+p. Remarquer comment @bonjour.rb@ est listé deux fois dans le status. Le premier
+changement (ajouter une valeur par défaut) est déclaré et est prêt à être commité.
 Le second changement (ajouter un commentaire) n'est pas déclaré. Si vous deviez
 commiter dès maintenant, le commentaire ne serait pas sauvé dans le dépôt.
 
@@ -396,7 +395,7 @@ h2. Commiter
 p. Commiter le changement déclaré (la valeur par défaut), et ensuite revérifions le status.
 
 Execute:
-git commit -m "Added a default value"
+git commit -m "Ajouter une valeur par défaut"
 =commit
 git status
 =status2
@@ -408,7 +407,7 @@ Output:
 =status2
 EOF
 
-p. La commande de status vous dis que @hello.rb@ a des changements non enregistrés,
+p. La commande de status vous dit que @bonjour.rb@ a des changements non enregistrés,
 mais n'est plus dans la liste des fichiers déclarés.
 
 h2. Ajouter le second changement
@@ -421,9 +420,9 @@ git add .
 !git status
 =status3
 
-p(note). *Note:* Nous utilisons le répertoire courrant ('.') comme le
+p(note). *Note:* Nous utilisons le répertoire courant ('.') comme le
 fichier à ajouter. C'est vraiment un raccourci pratique pour ajouter tous
-les changements au fichiers dans le répertoire courant et en dessous. Mais
+les changements aux fichiers dans le répertoire courant et en dessous. Mais
 comme il ajoute tout, c'est _vraiment_ une bonne idée de vérifier le status
 avant de faire un <tt>add .</tt>, juste pour s'assurer que vous n'ajoutez aucun
 fichier qui ne soit pas désiré.
@@ -443,7 +442,7 @@ p. Maintenant le second changement a été déclaré et est prêt à être commi
 h2. Commiter le second changement
 
 Execute:
-git commit -m "Added a comment"
+git commit -m "Ajout d'un commentaire"
 
 ----------------------------------------------------------------------
 h1. Historique
@@ -468,7 +467,7 @@ EOF
 p. Voici la liste des quatre commits que nous avons fait dans le dépôt
 jusqu'à maintenant.
 
-h2. Historique avec entrées sur une ligne
+h2. Historique avec les entrées affichées sur une ligne
 
 p. Vous avez une grande possibilité de contrôle sur ce que la commande @log@
 renvoie. J'aime bien le formatage sur une ligne:
@@ -492,15 +491,16 @@ pre(instructions).
 git log --pretty=oneline --max-count=2
 git log --pretty=oneline --since='5 minutes ago'
 git log --pretty=oneline --until='5 minutes ago'
-git log --pretty=oneline --author=<your name>
+git log --pretty=oneline --author=<votre nom>
 git log --pretty=oneline --all
 
 p. Voir man git-log pour tous les détails.
 
 h2. Devenir imaginatif
 
-p. Voici ce que j'utilise pour vérifier les changements fait dans la dernière semaine.
-J'ajouterai @--author=jim@ si je veux seulement les changements que j'ai fait.
+p. Voici ce que j'utilise pour vérifier les changements faits au cours de la
+dernière semaine. J'ajouterai @--author=jim@ si je veux seulement les changements
+que j'ai fait.
 
 pre(instructions).
 git log --all --pretty=format:"%h %cd %s (%an)" --since='7 days ago'
@@ -524,7 +524,7 @@ p. Regardons cette ligne dans le détail:
 
 * @--pretty="..."@ définit le format de sortie.
 * @%h@ est la hash abrégé du commit
-* @%d@ sont le type de décoration sur ce commit (comme les branches ou les tags)
+* @%d@ est le type de décoration sur ce commit (comme les branches ou les tags)
 * @%ad@ est la date de l'auteur
 * @%s@ est le commentaire
 * @%an@ est le nom de l'auteur
@@ -537,7 +537,7 @@ Heuseusement nous apprendrons à utiliser les alias git dans la prochaine partie
 h2. Autres outils
 
 p. Les deux <code>gitx</code> (pour Macs) et <code>gitk</code> (chaque plateforme)
-sont utile pour exlorer l'historique des logs.
+sont utiles pour exlorer l'historique des logs.
 
 ----------------------------------------------------------------------
 h1. Alias
@@ -590,8 +590,8 @@ un petit moment.
 h2. Alias de la ligne de commande (optionnel)
 
 p(note). *Note:* Cette section est pour les utilisateurs qui utilisent une ligne
-de commande de type posix. Les utilisateurs Windows et utilisateurs n'utilisant pas
-une ligne de commande non-posix peuvent passer à la prochaine partie.
+de commande de type posix. Les utilisateurs Windows et ceux utilisant une
+ligne de commande non-posix peuvent passer à la prochaine partie.
 
 p. Si votre ligne de commande supporte les alias et les raccourcis, ensuite vous
 pouvez utiliser des alias à ce niveau également. Voici ceux que j'utilise:
@@ -610,12 +610,12 @@ alias got='git '
 alias get='git '
 EOF
 
-p. L'abbréviation @go@ pour @git checkout@ est particulièrement joli. Cela me
+p. L'abbréviation @go@ pour @git checkout@ est particulièrement jolie. Cela me
 permet de taper:
 
 pre(instructions). go <branch>
 
-p. pour récupérer une branche particulière.
+p. Pour récupérer une branche particulière.
 
 p. Et oui, je tape par erreur @git@ comme @get@ ou @got@ suffisamment souvent
 pour créer l'alias pour eux.
@@ -637,8 +637,8 @@ Execute:
 git hist
 =log
 
-p(note). *Note:* Vous vous rappelez avoir défini @hist@ dans votre
-fichier @.gitconfig@, n'est ce pas? Si ce n'est pas le cas, revoyez le tutoriel
+p(note). *Note:* Vous vous rappelez avoir défini @hist@ dans votre fichier
+@.gitconfig@, n'est ce pas? Si ce n'est pas le cas, revoyez le tutoriel
 sur les alias.
 
 Output:
@@ -648,13 +648,13 @@ EOF
 p. Examiner la sortie du log et trouver le hash pour le premier commit. Cela
 doit être la dernière ligne de la sortie de @git hist@. Utiliser le code hash
 (les 7 premiers caractères sont suffisants) dans la commande ci-dessous. Ensuite,
-vérifier le contenu du fichier hello.rb.
+vérifier le contenu du fichier bonjour.rb.
 
-Set: hash=hash_for("First Commit")
+Set: hash=hash_for("Mon premier commit")
 Execute:
 git checkout <hash>
 =checkout
-cat hello.rb
+cat bonjour.rb
 =cat
 
 p(note). *Note:* Les commandes données ici sont des commandes Unix et
@@ -677,14 +677,14 @@ p. La sortie de la commande @checkout@ explique la situation de manière assez
 claire. Les vieilles versions de git vont se plaindre de ne pas être sur une
 branche locale. Dans tous les cas, ne vous en inquiétez pas maintenant.
 
-p. Noter que les contenus du fichier hello.rb sont les contenus originaux.
+p. Noter que les contenus du fichier bonjour.rb sont les contenus originaux.
 
 h2. Retourner la dernière version de la branche master
 
 Execute:
 git checkout master
 =checkout2
-cat hello.rb
+cat bonjour.rb
 =cat2
 
 p. Vous devriez voir ...
@@ -704,7 +704,7 @@ h3. Buts
 
 * Apprendre comment tagger des commits avec des noms pour des références futures
 
-p. Appelons la version courante du programme hello version 1 (v1).
+p. Appelons la version courante du programme bonjour version 1 (v1).
 
 h2. Tagger la version 1
 
@@ -728,7 +728,7 @@ ancêtre de v1".
 Execute:
 git checkout v1^
 =checkout
-cat hello.rb
+cat bonjour.rb
 =cat
 
 Output:
@@ -736,7 +736,7 @@ Output:
 =cat
 EOF
 
-p. Voir que c'est la version avec la valeur par défault _avant_ que nous ajoutions
+p. Voir que c'est la version avec la valeur par défaut _avant_ que nous ajoutions
 le commentaire. Faisons cette v1-beta.
 
 Execute:
@@ -782,7 +782,7 @@ Output:
 EOF
 
 p. Vous pouvez voir les deux tags (@v1@ et @v1-beta@) listés dans la sortie
-de log, avec à côté le nom de la branche (@master@).  Aussi, @HEAD@ vous
+de log, avec à côté le nom de la branche (@master@). Aussi, @HEAD@ vous
 montre le commit qui est actuellement utilisé (qui est le @v1-beta@ pour
 le moment).
 
@@ -800,19 +800,19 @@ p. S'assurer que vous êtes sur le dernier commit dans master avant de continuer
 Execute:
 git checkout master
 
-h2. Changer hello.rb
+h2. Changer bonjour.rb
 
 p. Quelquefois, vous avez modifié un fichier dans votre répertoire de travail local
 et vous souhaitez simplement revenir à l'état de ce qui a été déjà commité. La
 commande checkout va gérer cela.
 
-Changer hello.rb pour avoir un mauvais commentaire.
+Changer bonjour.rb pour avoir un mauvais commentaire.
 
-File: hello.rb
-# This is a bad comment.  We want to revert it.
-name = ARGV.first || "World"
+File: bonjour.rb
+# Ceci est un mauvais commentaire. Nous voulons l'annuler.
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 h2. Vérifier le status
@@ -827,19 +827,19 @@ Output:
 =status
 EOF
 
-p. Nous voyons que le fichier @hello.rb@ a été modifié mais n'a pas encore été déclaré.
+p. Nous voyons que le fichier @bonjour.rb@ a été modifié mais n'a pas encore été déclaré.
 
 h2. Annuler les changements dans le répertoire de travail
 
-p. Utiliser la commande @checkout@ pour récupérer la version du fichier @hello.rb@ issue
+p. Utiliser la commande @checkout@ pour récupérer la version du fichier @bonjour.rb@ issue
 du dépôt.
 
 Execute:
-git checkout hello.rb
+git checkout bonjour.rb
 =checkout
 !git status
 =status2
-cat hello.rb
+cat bonjour.rb
 =cat
 
 Output:
@@ -861,19 +861,19 @@ h3. Buts
 
 h2. Changer le fichier et déclarer le changement
 
-p. Modifier le fichier @hello.rb@ pour avoir un mauvais commentaire
+p. Modifier le fichier @bonjour.rb@ pour avoir un mauvais commentaire
 
-File: hello.rb
-# This is an unwanted but staged comment
-name = ARGV.first || "World"
+File: bonjour.rb
+# C'est un commentaire non désiré mais déjà déclaré
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 p. Et maintenant continuer et déclarer le fichier.
 
 Execute:
-git add hello.rb
+git add bonjour.rb
 
 h2. Vérifier le status
 
@@ -896,7 +896,7 @@ p. Heureusement la ligne de status nous dit exactement comment faire pour
 annuler la déclaration du changement.
 
 Execute:
-git reset HEAD hello.rb
+git reset HEAD bonjour.rb
 =reset
 
 Output:
@@ -915,7 +915,7 @@ la changement non désiré du répertoire de travail.
 h2. Mettre à jour à la version commitée
 
 Execute:
-git checkout hello.rb
+git checkout bonjour.rb
 git status
 =status2
 
@@ -941,27 +941,27 @@ plusieurs façons de gérer ce problème, et la manière dont nous allons faire
 cela dans cette partie du tutoriel est toujours sûre.
 
 p. Essentiellement nous allons annuler le commit en créant un nouveau commit qui
-invers les changements non voulus.
+inverse les changements non voulus.
 
 h2. Changer le fichier et le commiter.
 
-p. Changer le fichier @hello.rb@ de la manière suivante.
+p. Changer le fichier @bonjour.rb@ de la manière suivante.
 
-File: hello.rb
-# This is an unwanted but committed change
-name = ARGV.first || "World"
+File: bonjour.rb
+# C'est un changement non voulu mais déjà commité
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 Execute:
-git add hello.rb
-git commit -m "Oops, we didn't want this commit"
+git add bonjour.rb
+git commit -m "Oups, nous  ne voulions pas ce commit"
 
 h2. Créer un commit de retour en arrière
 
 p. Pour annuler un changement commité, nous avons besoin de générer un commit
-qui enlève les changements introduits par notre commit non voulu.
+qui annule les changements introduits par notre commit non voulu.
 
 Execute:
 -git revert HEAD
@@ -1021,14 +1021,14 @@ dans l'historique de la branche (en utilisant la commande @git log@).
 p. Souvent, nous faisons un commit et réalisons immédiatement que nous avons
 commis une erreur. Il pourrait être pratique d'avoir une commande de retour
 en arrière qui nous permette de faire comme si le mauvais commit n'avait jamais
-été fait. Cette commande de retour en arrière devrait aussi pouvoir prévenir
+existé. Cette commande de retour en arrière devrait aussi pouvoir prévenir
 que le mauvais commit apparaisse dans l'historique de la commande @git log@.
 Ce serait comme si le mauvais commit n'avait jamais existé.
 
 h2. La commande @reset@
 
-p. Nous avons déjà vue la commande @reset@ et l'avons utilisé pour garder les
-fichiers en attente consistants  avec un commit donné(nous avons utilisé le
+p. Nous avons déjà vu la commande @reset@ et l'avons utilisé pour garder les
+fichiers en attente consistants avec un commit donné (nous avons utilisé le
 commit HEAD dans la précédente partie).
 
 p. Quand nous donnons la référence d'un commit (comme un hash, une branche ou
@@ -1052,7 +1052,7 @@ Output:
 =hist
 EOF
 
-p. Nous voyons que nous avons un commit "Oops" et un commit "Revert Oops"
+p. Nous voyons que nous avons un commit "Oups" et un commit "Annuler Oups"
 comme deux derniers commits fait dans cette branche. Maintenant enlevons-les
 en utilisant reset.
 
@@ -1062,11 +1062,11 @@ p. mais avant d'enlever les commits, marquons le dernier commit avec
 un tag pour que nous puissions encore le retrouver.
 
 Execute:
-git tag oops
+git tag oups
 
-h2. Réinitialiser à Before Oops
+h2. Réinitialiser à Avant Oups
 
-p. En regardant àl'historique de log (au dessus), nous voyions que le commit
+p. En regardant l'historique de log (au dessus), nous voyions que le commit
 taggé 'v1' est le commit juste avant le mauvais commit. Commençons par
 réinitialiser la branche à ce point. A présent que cette branche est taggé,
 nous pouvons utiliser le nom du tag dans la commande reset (si elle ne
@@ -1083,17 +1083,17 @@ Output:
 =hist2
 EOF
 
-p. Our master branch now points to the v1 commit and the Oops commit
-and the Revert Oops commit are no longer in the branch.  The @--hard@
-parameter indicates that the working directory should be updated to be
-consistent with the new branch head.
+p. Notre branche master branch pointe maintenant vers le commit v1 et le commit
+Oups et le commit Annuler Oups nes ont plus dans la branche. Le paramètre
+@--hard@ indique que le répertoire de travail devrait être mis à jour pour être
+consistant avec le head de la nouvelle branche.
 
 h2. Rien n'est jamais perdu
 
 p. Mais qu'est il arrivé aux mauvais commits? En fait les commits sont
 toujours dans le dépôt. D'ailleurs, nous pouvons toujours les référencer.
 Rappelez vous qu'au début de cette partie, nous avons taggé le commit
-d'annulation avec le tag "oops". Regardons _tous_ les commits.
+d'annulation avec le tag "oups". Regardons _tous_ les commits.
 
 Execute:
 git hist --all
@@ -1117,22 +1117,22 @@ N'importe quel accident peut être généralement récupéré en faisant un rese
 avec le commit désiré.
 
 p. Cependant, si la branche est partagée sur des répertoires distants, faire
-un reste peut gêner les autres utilisateurs de la branche.
+un reset peut gêner les autres utilisateurs de la branche.
 
 ----------------------------------------------------------------------
-h1. Enlever le tag oops
+h1. Enlever le tag oups
 
 h3. Buts
 
-* Enlever le tag oops (pour faire le ménage)
+* Enlever le tag oups (pour faire le ménage)
 
-h2. Enlever le tag oops
+h2. Enlever le tag oups
 
-p. Le tag oops a atteint son but. Enlevons-le et permettons aux commits
-qu'il référence d'être nettoyer.
+p. Le tag oups a atteint son but. Enlevons-le et permettons aux commits
+qu'il référence d'être nettoyé.
 
 Execute:
-git tag -d oops
+git tag -d oups
 =tag
 git hist --all
 =hist
@@ -1142,43 +1142,43 @@ Output:
 =hist
 EOF
 
-p. Le tag oops est désormais plus listé dans le dépôt.
+p. Le tag oups n'est désormais plus listé dans le dépôt.
 
 ----------------------------------------------------------------------
 h1. Amender les commits
 
 h3. Buts
 
-* APprendre comment amender un commit existant
+* Apprendre comment amender un commit existant
 
 h2. Changer le programme puis commiter
 
 p. Ajouter un commentaire de l'auteur au programme.
 
-File: hello.rb
-# Default is World
-# Author: Jim Weirich
-name = ARGV.first || "World"
+File: bonjour.rb
+# L'argument par défaut est Monde
+# Auteur: Jim Weirich
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 Execute:
-git add hello.rb
-git commit -m "Add an author comment"
+git add bonjour.rb
+git commit -m "Ajouter un commentaire avec l'auteur"
 
 h2. Ah, une erreur, il faudrait un email
 
 p. Après avoir fait le commit, vous réalisez  que n'importe quel bon commentaire
-devrait avoir un email inclus. Mettre à jour le programme hello pour inclure un
+devrait avoir un email inclus. Mettre à jour le programme bonjour pour inclure un
 email.
 
-File: hello.rb
-# Default is World
-# Author: Jim Weirich (jim@somewhere.com)
-name = ARGV.first || "World"
+File: bonjour.rb
+# L'argument par défaut est Monde
+# Auteur: Jim Weirich (jim@somewhere.com)
+name = ARGV.first || "Monde"
 
-puts "Hello, #{name}!"
+puts "Bonjour, #{name}!"
 EOF
 
 h2. Amender le commit précédent
@@ -1187,7 +1187,7 @@ p. Nous ne voulons vraiment pas un commit séparé juste pour l'email.
 Amendons le commit précédent pour inclure le changement d'email.
 
 Execute:
-git add hello.rb
+git add bonjour.rb
 =add
 git commit --amend -m "Add an author/email comment"
 =commit
@@ -1220,7 +1220,7 @@ h3. Buts
 
 * Apprendre comment bouger un fichier dans un dépôt.
 
-h2. Bougerle fichier hello.rb dans un répertoire lib.
+h2. Bougerle fichier bonjour.rb dans un répertoire lib.
 
 p. Nous allons maintenant construire la structure de notre petit
 dépôt. Bougeons le programme dans un répertoire lib.
@@ -1228,7 +1228,7 @@ dépôt. Bougeons le programme dans un répertoire lib.
 Execute:
 mkdir lib
 =mkdir
-git mv hello.rb lib
+git mv bonjour.rb lib
 =move
 !git status
 =status
@@ -1241,10 +1241,10 @@ EOF
 
 p. En utilisant git pour effectuer le déplacement, nous informons git de 2 choses
 
-# Que le fichier @hello.rb@ a été supprimé.
-# Que le fichier @lib/hello.rb@ a été créé.
+# Que le fichier @bonjour.rb@ a été supprimé.
+# Que le fichier @lib/bonjour.rb@ a été créé.
 
-p. Ces deux informations ont  immédiatement été ajoutées dans la liste des fichiers
+p. Ces deux informations ont immédiatement été ajoutées dans la liste des fichiers
 en attente et sont prêtes à être commitées. La commande git status renvoie que le
 fichier a été déplacé.
 
@@ -1261,16 +1261,16 @@ C'est un peu plus de travail mais le résultat est identique.
 p(command). Nous aurions pu faire:
 
 pre(instructions). mkdir lib
-mv hello.rb lib
-git add lib/hello.rb
-git rm hello.rb
+mv bonjour.rb lib
+git add lib/bonjour.rb
+git rm bonjour.rb
 
 h2. Commiter le nouveau dossier
 
 p. Commitons ce déplacement.
 
 Execute:
-git commit -m "Moved hello.rb to lib"
+git commit -m "Déplacement de bonjour.rb dans lib"
 
 ----------------------------------------------------------------------
 h1. Plus de structuration
@@ -1290,7 +1290,7 @@ File: Rakefile
 task :default => :run
 
 task :run do
-  require './lib/hello'
+  require './lib/bonjour'
 end
 EOF
 
@@ -1298,10 +1298,10 @@ p. Ajouter et commiter le changement.
 
 Execute:
 git add Rakefile
-git commit -m "Added a Rakefile."
+git commit -m "Ajout d'un Rakefile"
 
 p. Vous devriez maintenant être capable d'utiliser rake pour lancer
-votre programme hello.
+votre programme bonjour.
 
 Execute:
 rake
@@ -1359,10 +1359,10 @@ Output:
 =lsobjs2
 EOF
 
-p. Ragradez dans l'un des répertoires à deux lettres. Vous devriez voir
+p. Regardez dans l'un des répertoires à deux lettres. Vous devriez voir
 quelques fichiers avec des noms de 38 caractères. Ce sont les fichiers
 qui contiennent les objets stockés dans git. Ces fichiers sont compressés
-et encodés, ainsi regardez à leur contenu directement ne sera pas très utile,
+et encodés, ainsi regarder à leur contenu directement ne sera pas très utile,
 mais nous allons jeter un oeil plus attentif d'ici peu.
 
 h2. Le fichier config
@@ -1376,7 +1376,7 @@ Output:
 EOF
 
 p. C'est un fichier de configuration propre au projet. Les entrées ici
-vont supplémenter les entrées de configuration dans le fichier @.gitconfig@
+vont supplanter les entrées de configuration dans le fichier @.gitconfig@
 de votre répertoire personnel(home), du moins pour ce projet.
 
 h2. Branches et tags
@@ -1425,7 +1425,7 @@ h1. Fonctionnement interne de Git: travailler directement avec les objets Git
 h3. Buts
 
 * Explorer la structure du magasin d'objets
-* Apprendre comment utiliser les hashes SHA1 pour trouver le contenu dans
+* Apprendre comment utiliser les hashs SHA1 pour trouver le contenu dans
 le dépôt
 
 p. Maintenant utilisons quelques outils pour analyser directement les objets git.
@@ -1437,7 +1437,7 @@ git hist --max-count=1
 =log
 
 p. Cela devrait montrer le dernier commit fait dans le dépôt. Le hash
-SHA1 sur votre système est probablement différent de ce lui qui est chez nous,
+SHA1 sur votre système est probablement différent de celui qui est chez nous,
 mais vous devriez voir quelque chose de ce type.
 
 Output:
@@ -1448,7 +1448,7 @@ h2. Extraire les infos du dernier commit
 
 Utiliser le hash SHA1 depuis le commit listé ci-dessus ...
 
-Set: hash=hash_for("Added a Rakefile")
+Set: hash=hash_for("Ajout d'un Rakefile")
 Execute:
 git cat-file -t <hash>
 =type
@@ -1462,34 +1462,34 @@ Output:
 =dump
 EOF
 
-p(note). *NOTE:* If you defined the 'type' and 'dump' aliases from
-the aliases lab, then you can type @git type@ and @git dump@ rather
-than the longer cat-file commands (which I never remember).
+p(note). *NOTE:* Si vous avez défini les alias 'type' et 'dump' aliases dans
+la partie sur les alias, alors vous pouvez taper @git type@ et @git dump@ plutôt
+que la ligne de commande plus longue cat-file (dont je ne me souviens jamais).
 
-p. This is the dump of the commit object that is at the head of the
-master branch.  It looks a lot like the commit object from the
-presentation earlier.
+p. Ceci est le dump de l'objet commité qui est le head de la branche master.
+Il ressemble beaucoup à l'objet commit de la présentation précédente.
 
-h2. Finding the Tree
+h2. Trouver l'arbre
 
-p. We can dump the directory tree referenced in the commit.  This
-should be a description of the (top level) files in our project (for
-that commit).  Use the SHA1 hash from the "tree" line listed above.
+p. Nous pouvons faire un dump de l'arborescence du répertoire référencé dans le
+commit. Cela devrait être une description des fichier (du niveau supérieur)
+dans notre projet ( pour ce commit). Utiliser le hash SHA1 depuis la ligne de
+"l'arbre" listée ci-dessus.
 
 Set: treehash=hash_in(var['hash'], 'tree')
 Execute:
 git cat-file -p <treehash>
 =treedump
 
-p. Here's what my tree looks like...
+p. Voilà à quoi ressemble mon arbre...
 
 Output:
 =treedump
 EOF
 
-p. Yep, I see the Rakefile and the lib directory.
+p. Super, je vois le Rakefile et le répertoire lib.
 
-h2. Dumping the lib directory
+h2. Faire un dump du répertoire lib
 
 Set: libhash=hash_in(var['treehash'], 'lib')
 Execute:
@@ -1500,11 +1500,11 @@ Output:
 =libdump
 EOF
 
-p. There's the @hello.rb@ file.
+p. Il y a le fichier @bonjour.rb@.
 
-h2. Dumping the @hello.rb@ file
+h2. Faire un dump du fichier @bonjour.rb@
 
-Set: rbhash=hash_in(var['libhash'], 'hello')
+Set: rbhash=hash_in(var['libhash'], 'bonjour')
 Execute:
 git cat-file -p <rbhash>
 =rbdump
@@ -1513,79 +1513,79 @@ Output:
 =rbdump
 EOF
 
-p. There you have it.  We've dumped commit objects, tree objects and
-blob objects directly from the git repository.  That's all there is to
-it, blobs, trees and commits.
+p. Maintenant vous savez. Nous avons fait des dumps d'objets commit, d'objets arbre
+et d'objets blob directement depuis le dépôt git. C'est tout ce qu'il y a dedans,
+des blobs, des arbres et des commits.
 
-h2. Explore On You Own
+h2. Explorer par vous-même
 
-p. Explore the git repo manually on your own.  See if you can find the
-original hello.rb file from the very first commit by manually
-following the SHA1 hash references starting in the latest commit.
+p. Explorer le dépôt git manuellement par vous-même. Regarder si vous pouvez
+trouver le fichier original bonjour.rb du premier commit en suivant en manuel
+les références du hash SHA1 en partant du dernier commit.
 
 ----------------------------------------------------------------------
-h1. Creating a Branch
+h1. Créer une branche
 
-h3. Goals
+h3. Buts
 
-* Learn how to create a local branch in a repository
+* Apprendre comment créer une branche locale dans un dépôt
 
-p. It's time to do a major rewrite of the hello world functionality.
-Since this might take awhile, you'll want to put these changes into a
-separate branch to isolate them from changes in master.
+p. Il est l'heure de faire une réécriture importante de la fonctionnalité
+bonjour monde. Comme cela risque de prendre du temps, vous voudrez mettre ces
+changements dans une branche séparée pour les isoler de ceux dans master.
 
-h2. Create a Branch
+h2. Créer une branche
 
-p. Let's call our new branch 'greet'.
+p. Appelons notre nouvelle branche 'saluer'.
 
 Execute:
-git checkout -b greet
+git checkout -b saluer
 !git status
 
-p(note). *NOTE:* @git checkout -b <branchname>@ is a shortcut for @git
-branch <branchname>@ followed by a @git checkout <branchname>@.
+p(note). *NOTE:* @git checkout -b <nombranche>@ est une raccourci pour @git
+branch <nombranche>@ suivi par un @git checkout <nombranche>@.
 
-p. Notice that the git status command reports that you are on the
-'greet' branch.
+p. Noter que la commande git status renvoie que vous êtes sur la branche
+'saluer'.
 
-h2. Changes for Greet: Add a Greeter class.
+h2. Changements pour Saluer: ajouter une classe Faireunsalut.
 
-File: lib/greeter.rb
-class Greeter
+File: lib/faireunsalut.rb
+class Faireunsalut
   def initialize(who)
     @who = who
   end
-  def greet
-    "Hello, #{@who}"
+  def saluer
+    "Bonjour, #{@who}"
   end
 end
 EOF
 
 Execute:
-git add lib/greeter.rb
-git commit -m "Added greeter class"
+git add lib/faireunsalut.rb
+git commit -m "Ajout de la classe Faireunsalut"
 
-h2. Changes for Greet: Modify the main program
+h2. Changements pour Saluer: modifier le programme principal
 
-p. Update the hello.rb file to use greeter
+p. Mettre à jour le fichier bonjour.rb pour utiliser saluer
 
-File: lib/hello.rb
-require 'greeter'
+File: lib/bonjour.rb
+require 'faireunsalut'
 
-# Default is World
-name = ARGV.first || "World"
+# L'argument par défaut est Monde
+name = ARGV.first || "Monde"
 
-greeter = Greeter.new(name)
-puts greeter.greet
+faireunsalut = Faireunsalut.new(name)
+puts faireunsalut.saluer
 EOF
 
 Execute:
-git add lib/hello.rb
-git commit -m "Hello uses Greeter"
+git add lib/bonjour.rb
+git commit -m "bonjour utiliser Faireunsalut"
 
-h2. Changes for Greet: Update the Rakefile
+h2. Changements pour Saluer: mettre à jour le Rakefile
 
-p. Update the Rakefile to use an external ruby process
+p. Mettre à jour le Rakefile pour utiliser un processus ruby externe
 
 File: Rakefile
 #!/usr/bin/ruby -wKU
@@ -1593,27 +1593,27 @@ File: Rakefile
 task :default => :run
 
 task :run do
-  ruby '-Ilib', 'lib/hello.rb'
+  ruby '-Ilib', 'lib/bonjour.rb'
 end
 EOF
 
 Execute:
 git add Rakefile
-git commit -m "Updated Rakefile"
+git commit -m "Rakefile mis à jour"
 
-h2. Up Next
+h2. Après
 
-p. We now have a new branch called *greet* with 3 new commits on it.
-Next we will learn how to navigate and switch between branches.
+p. Nous avons maintenant une nouvelle branche appelée *saluer* avec 3 nouveaux commits dedans.
+Ensuite, nous allons apprendre comment naviguer et changer de branches.
 
 ----------------------------------------------------------------------
-h1. Navigating Branches
+h1. Naviguer dans les branches
 
-h3. Goals
+h3. Buts
 
-* Learn how to navigate between the branches of a repository
+* Apprendre comment naviguer entre les branches d'un dépôt
 
-p. You now have two branches in your project:
+p. Vous avez maintenant deux branches dans votre projet:
 
 Execute:
 git hist --all
@@ -1623,14 +1623,14 @@ Output:
 =log
 EOF
 
-h2. Switch to the Master Branch
+h2. Passer dans la branche Master
 
-p. Just use the @git checkout@ command to switch between branches.
+p. Utiliser juste la commande @git checkout@ pour basculer entre les branches.
 
 Execute:
 git checkout master
 =checkout
-cat lib/hello.rb
+cat lib/bonjour.rb
 =cat
 
 Output:
@@ -1638,15 +1638,15 @@ Output:
 =cat
 EOF
 
-p. You are now on the master branch.  You can tell because the
-hello.rb file doesn't use the @Greeter@ class.
+p. Vous êtes maintenant dans la branche master. Vous pouvez dire ceci car le
+fichier bonjour.rb n'utilise pas la classe @Faireunsalut@.
 
-h2. Switch Back to the Greet Branch.
+h2. Retourner à nouveau dans la branche Saluer.
 
 Execute:
-git checkout greet
+git checkout saluer
 =checkout2
-cat lib/hello.rb
+cat lib/bonjour.rb
 =cat2
 
 Output:
@@ -1654,47 +1654,49 @@ Output:
 =cat2
 EOF
 
-p. The contents of the @lib/hello.rb@ confirms we are back on the
-*greet* branch.
+p. Le contenu de @lib/bonjour.rb@ confirme que nous sommes revenus dans la
+branche *saluer*.
 
 ----------------------------------------------------------------------
-h1. Changes in Master
+h1. Changements dans Master
 
-h3. Goals
+h3. Buts
 
-* Learning how to deal with multiple branches with different (and possibly conflicting) changes.
+* Apprendre comment gérer plusieurs branches avec différents changements (qui
+sont potentiellement conflictuels).
 
-p. While you were changing the greet branch, someone else decided to
-update the master branch.  They added a README.
+p. Pendant que vous changiez la branche saluer, quelqu'un d'autre a décidé de
+mettre à jour la branche master. Il a ajouté un fichier README.
 
-h2. Switch to the master branch.
+h2. Basculer dans la branche master.
 
 Execute:
 git checkout master
 
-h2. Create the README.
+h2. Créer le README.
 
 File: README
-This is the Hello World example from the git tutorial.
+C'est un exemple de Bonjour Monde pour le tutoriel git.
 EOF
 
-h2. Commit the README to master.
+h2. Commiter le README dans master.
 
 Execute:
 git add README
-git commit -m "Added README"
+git commit -m "Ajout d'un README"
 
 ----------------------------------------------------------------------
-h1. Viewing Diverging Branches
+h1. Visualiser les branches qui divergent
 
-h3. Goals
+h3. Buts
 
-* Learn how to view diverging branches in a repository.
+* Apprendre comment voir les divergences entre branches dans un dépôt.
 
-h2. View the Current Branches
+h2. Voir les branches courantes
 
-p. We now have two diverging branches in the repository.  Use the
-following log command to view the branches and how they diverge.
+p. Nous avons maintenant deux branches divergentes dans le dépôt. Utiliser la
+commande de log suivante pour voir les branches et la manière dont elles
+divergent.
 
 Execute:
 git hist --all
@@ -1704,29 +1706,31 @@ Output:
 =log
 EOF
 
-p. Here is our first chance to see the @--graph@ option on @git hist@ in
-action. Adding the @--graph@ option to @git log@ causes it to draw the
-commit tree using simple ASCII characters.  We can see both branches
-(greet and master), and that the master branch is the current HEAD.
-The common ancestor to both branches is the "Added a Rakefile" branch.
+p. Voici notre première chance de voir l'option @--graph@ de @git hist@ en
+action. L'ajout de l'option @--graph@ à @git log@ lui permet de dessiner
+l'arbre de commit en utilisant de simples caractères ASCII. Nous pouvons voir
+les deux branches (saluer et master), et que la branche master est le HEAD
+courant. L'ancêtre commun des deux branches est la branche "Ajout d'un Rakefile".
 
-p. The @--all@ flag makes sure that we see all the branches.  The
-default is to show only the current branch.
+p. L'option @--all@ nous permet de nous assurer que nous voyons toutes les
+branches. Le fonctionnement par défaut est de montrer seulement la branche
+courante.
 
 ----------------------------------------------------------------------
-h1. Merging
+h1. Fusion
 
-h3. Goals
+h3. Buts
 
-* Learn how to merge two diverging branches to bring the changes back into a single branch.
+* Apprendre comment fusionner deux branches divergentes pour récupérer les
+changements dans une seule branche.
 
-h2. Merge the branches
+h2. Fusionner les branches
 
-p. Merging brings the changes in two branches together.  Let's go back
-to the greet branch and merge master onto greet.
+p. La fusion récupère les changements dans les deux branches ensemble. Revenons
+dans la branche saluer et fusionnons master dans saluer.
 
 Execute:
-git checkout greet
+git checkout saluer
 =checkout
 git merge master
 =merge
@@ -1739,44 +1743,45 @@ Output:
 =hist
 EOF
 
-p. By merging master into your greet branch periodically, you can pick
-up any changes to master and keep your changes in greet compatible
-with changes in the mainline.
+p. En fusionnant master dans notre branche saluer périodiquement, vous pouvez
+récupérer n'importe quels changements dans master et garder vos changements
+dans saluer pour être compatible avec ceux dans la branche principale.
 
-p. However, it does produce ugly commit graphs. Latter we will look at
-the option of rebasing rather than merging.
+p. However, Cela produit des graphes de commit très "moche". plus tard, nous
+verrons les options pour faire un changement de base (rebase) plutôt qu'une
+fusion (merge).
 
-h2. Up Next
+h2. Et après
 
-p. But first, what if the changes in master conflict with the changes
-in greet?
+p. Mais en premier, que se passe-t-il si les changements dans master rentrent
+en conflit avec ceux effectués dans saluer?
 
 ----------------------------------------------------------------------
-h1. Creating a Conflict
+h1. Création d'un conflit
 
-h3. Goals
+h3. Buts
 
-* Create a conflicting change in the master branch.
+* Créer un changement conflictuel dans la branche master.
 
-h2. Switch back to master and create a conflict
+h2. Rebasculer sur master et créer un conflit
 
-p. Switch back to the master branch and make this change:
+p. Revenir à la branche master et faire ce changement:
 
 Execute:
 git checkout master
 
-File: lib/hello.rb
-puts "What's your name"
+File: lib/bonjour.rb
+puts "Quelle est votre nom?"
 my_name = gets.strip
 
-puts "Hello, #{my_name}!"
+puts "Bonjour, #{my_name}!"
 EOF
 
 Execute:
-git add lib/hello.rb
-git commit -m "Made interactive"
+git add lib/bonjour.rb
+git commit -m "Rendre interactif"
 
-h2. View the Branches
+h2. Voir les branches
 
 Execute:
 git hist --all
@@ -1786,25 +1791,25 @@ Output:
 =log
 EOF
 
-p. Master at commit "Added README" has been merged to the greet
-branch, but there is now an additional commit on master that has not
-been merged back to greet.
+p. La branche master au commit "Ajout d'un README" a été fusionné dans la
+branche saluer, mais il y a maintenant un commit additionnel sur master qui
+n'a pas été fusionné dans saluer.
 
-h2. Up Next
+h2. Et après
 
-p. The latest change in master conflicts with some existing changes in
-greet.  Next we will resolve those changes.
+p. Les derniers changements dans master rentrent en conflit avec quelques
+changements existants dans saluer. Après, nous allons résoudre ces changements.
 
 ----------------------------------------------------------------------
-h1. Resolving Conflicts
+h1. Résolution des conflits
 
-h3. Goals
+h3. Buts
 
-* Learn how to handle conflicts during a merge
+* Apprendre comment gérer les conflits pendant une fusion (merge)
 
-h2. Merge master to greet
+h2. Fusionner master dans saluer
 
-p. Now go back to the greet branch and try to merge the new master.
+p. Maintenant, retournons dans la branche saluer et essayons de fusionner master.
 
 Execute:
 git checkout greet
@@ -1814,56 +1819,56 @@ Output:
 $ git checkout greet
 Switched to branch 'greet'
 $ git merge master
-Auto-merging lib/hello.rb
-CONFLICT (content): Merge conflict in lib/hello.rb
+Auto-merging lib/bonjour.rb
+CONFLICT (content): Merge conflict in lib/bonjour.rb
 Automatic merge failed; fix conflicts and then commit the result.
 EOF
 
-If you open lib/hello.rb, you will see:
+Si vous ouvrez lib/bonjour.rb, vous allez voir:
 
-file: lib/hello.rb
+file: lib/bonjour.rb
 <<<<<<< HEAD
-require 'greeter'
+require 'faireunsalut'
 
-# Default is World
-name = ARGV.first || "World"
+# L'argument par défaut est Monde
+name = ARGV.first || "Monde"
 
-greeter = Greeter.new(name)
-puts greeter.greet
+faireunsalut = Faireunsalut.new(name)
+puts faireunsalut.saluer
 =======
-# Default is World
+# L'argument par défaut est Monde
 
-puts "What's your name"
+puts "Quelle est votre nom?"
 my_name = gets.strip
 
-puts "Hello, #{my_name}!"
+puts "Bonjour, #{my_name}!"
 >>>>>>> master
 EOF
 
-p. The first section is the version on the head of the current branch
-(greet).  The second section is the version on the master branch.
+p. La première section est la version dans le head de la branche courante
+(saluer). La deuxième section est la version dans la branche master.
 
-h2. Fix the Conflict
+h2. Corriger le conflit
 
-p. You need to manually resolve the conflict.  Modify @lib/hello.rb@
-to be the following.
+p. Vous devez manuellement résoudre le conflit. Modifier @lib/bonjour.rb@
+pour être comme suivant.
 
-File: lib/hello.rb
-require 'greeter'
+File: lib/bonjour.rb
+require 'faireunsalut'
 
-puts "What's your name"
+puts "Quelle est votre nom?"
 my_name = gets.strip
 
-greeter = Greeter.new(my_name)
-puts greeter.greet
+faireunsalut = Faireunsalut.new(my_name)
+puts faireunsalut.saluer
 EOF
 
-h2. Commit the Conflict Resolution
+h2. Commiter la résolution du conflit
 
 Execute:
-git add lib/hello.rb
+git add lib/bonjour.rb
 =add
-git commit -m "Merged master fixed conflict."
+git commit -m "La fusion depuis master corrige le conflit"
 =commit
 
 Output:
@@ -1871,12 +1876,12 @@ Output:
 =commit
 EOF
 
-h2. Advanced Merging
+h2. Fusion avancée
 
-p. git doesn't provide any graphical merge tools, but it will gladly
-work with any third party merge tool you wish to use.  See
-"http://onestepback.org/index.cgi/Tech/Git/UsingP4MergeWithGit.red":http://onestepback.org/index.cgi/Tech/Git/UsingP4MergeWithGit.red
-for a description of using the Perforce merge tool with git.
+p. Git ne propose aucun outil graphique de fusion, mais il fonctionnera très
+bien avec n'importe quel outil tiers de fusion que vous souhaiteriez utiliser.
+Voir "http://onestepback.org/index.cgi/Tech/Git/UsingP4MergeWithGit.red":http://onestepback.org/index.cgi/Tech/Git/UsingP4MergeWithGit.red
+pour une description de l'utilisation de l'outil de fusion Perforce avec git.
 
 ----------------------------------------------------------------------
 h1. Rebasing VS Merging
@@ -1913,7 +1918,7 @@ p. In this case we want to back greet up to the point prior to the
 merge with master.  We need to find the last commit before the merge.
 
 Execute:
-git checkout greet
+git checkout saluer
 =checkout
 git hist
 =log
@@ -1927,7 +1932,7 @@ p. That's a bit hard to read, but looking at the data we see that the
 "Updated Rakefile" commit was the last commit on the greet branch
 before merging.  Let's reset the greet branch to that commit.
 
-Set: hash=hash_for("Updated Rakefile")
+Set: hash=hash_for("Rakefile mis à jour")
 Execute:
 git reset --hard <hash>
 =reset
@@ -1977,7 +1982,7 @@ p. The 'Added README' commit is the one directly before the
 conflicting interactive mode.  We will reset the master branch to
 'Added README' branch.
 
-Set: hash=hash_for("Added README")
+Set: hash=hash_for("Ajout d'un README")
 Execute:
 git reset --hard <hash>
 git hist --all
@@ -2016,7 +2021,7 @@ $
 $ git rebase master
 First, rewinding head to replay your work on top of it...
 Applying: added Greeter class
-Applying: hello uses Greeter
+Applying: bonjour uses Greeter
 Applying: updated Rakefile
 $
 =log
@@ -2042,13 +2047,15 @@ p. Given the above guidelines, I tend to use rebase for short-lived,
 local branches and merge for branches in the public repository.
 
 ----------------------------------------------------------------------
-h1. Merging Back to Master
+h1. Fusionner dans la branche master
 
-h3. Goals
+h3. Buts
 
-* We've kept our greet branch up to date with master (via rebase), now let's merge the greet changes back into the master branch.
+* Nous avons gardé notre branche greet à jour avec master (via rebase),
+maintenant, il est temps de fusionner les changements de greet dans la
+branche master.
 
-h2. Merge greet into master
+h2. Fusionner greet dans master
 
 Execute:
 git checkout master
@@ -2069,7 +2076,7 @@ to the same commit as the greeter branch.
 
 p. There will never be conflicts in a fast-forward merge.
 
-h2. Review the logs
+h2. Examiner les logs
 
 Execute:
 git hist
@@ -2079,32 +2086,32 @@ Output:
 =log
 EOF
 
-p. The greet and master branches are now identical.
+p. Les branches greet et master sont maintenant identiques.
 
 ----------------------------------------------------------------------
-h1. Multiple Repositories
+h1. Dépôts multiples
 
-p. Up to this point we have been working with a single git repository.
-However, git excels at working with multiple repositories.  These
-extra repositories may be stored locally, or may be accessed across a
-network connection.
+p. Jusqu'à maintenant nous avons travaillé avec un seul dépôt git.
+Cependant, git excelle dans le travail avec plusieurs dépôts. Ces dépôts
+supplémentaires peuvent être stockés localement, ou peuvent être récupérés
+à travers une connexion réseau.
 
-p. In the next section we will create a new repository called
-"cloned_hello".  We will show how to move changes from one repository
-to another, and how to handle conflicts when they arise from between
-two repositories.
+p. Dans la section suivante, nous allons créer une nouveau dépôt appelé
+"cloned_bonjour". Nous allons vous montrer comment déplacer des changements
+d'un dépôt à un autre, et comment gérer les conflits qui se posent entre
+deux dépôts.
 
  !git_clone.png!
 
 
-p. For now, we will be working with local repositories
-(i.e. repositories stored on your local hard disk), however most of
-the things learned in this section will apply to multiple repositories
-whether they are stored locally or remotely over a network.
+p. Pour le moment, nous allons travailler avec des dépôts locaux
+(c'est à dire des dépôts stockés sur votre disque dur local), cependant
+la plupart des choses apprises dans cette section s'appliquera à de
+multiples dépôts qu'ils soient locaux ou disponibles via un réseau.
 
-p. *NOTE:* We are going be making changes to both copies of our
-repositories.  Make sure you pay attention to which repository you are
-in at each step of the following labs.
+p. *NOTE:* Nous allons faire des changements à des copies de nos dépôts.
+Assurez vous de faire attention dans quel dépôt vous êtes à chaque étape
+pour chaque partie du tutoriel.
 
 ----------------------------------------------------------------------
 h1. Cloner des dépôts
@@ -2115,7 +2122,7 @@ h3. Buts
 
 h2. Aller au répertoire de travail
 
-p. Aller au répertoire de travail et faire un clone de votre dépôt hello.
+p. Aller au répertoire de travail et faire un clone de votre dépôt bonjour.
 
 Execute:
 cd ..
@@ -2134,18 +2141,18 @@ Output:
 EOF
 
 p. A ce stade vous devriez être dans le répertoire "work". Il devrait
-avoir un seul dépôt ici nommé "hello".
+avoir un seul dépôt ici nommé "bonjour".
 
-h2. Créer un clone du dépôt hello
+h2. Créer un clone du dépôt bonjour
 
 p. Faisons un clone du dépôt.
 
 Execute:
-git clone hello cloned_hello
+git clone bonjour cloned_bonjour
 =clone
 ls
 =ls2
-+cd cloned_hello
++cd cloned_bonjour
 +git config user.name "Jim Weirich"
 +git config user.email "jim (at) edgecase.com"
 +cd ..
@@ -2156,7 +2163,7 @@ Output:
 EOF
 
 p. Il devrait maintenant y avoir deux dépôts dans votre répertoire de
-travail: le dépôt original "hello" et le nouveau dépôt cloné "cloned_hello".
+travail: le dépôt original "bonjour" et le nouveau dépôt cloné "cloned_bonjour".
 
 ----------------------------------------------------------------------
 h1. Examiner le dépôt cloné
@@ -2170,7 +2177,7 @@ h2. Jetons un oeil au dépôt cloné
 p. Regardons un peu le dépôt cloné.
 
 Execute:
-cd cloned_hello
+cd cloned_bonjour
 =cd
 ls
 =ls
@@ -2233,7 +2240,7 @@ Output:
 EOF
 
 p. Maintenant, nous voyons que le dépôt distant "origin"est simplement le
-dépôt original *hello*. Les dépôts distants vivent typiquement sur une
+dépôt original *bonjour*. Les dépôts distants vivent typiquement sur une
 machine séparée, de manière possible aussi sur une serveur centralisé.
 Comme nous le voyons ici, cependant, ils peuvent aussi pointer vers un
 répertoire sur la même machine.
@@ -2287,19 +2294,19 @@ h3. Buts
 * Faire quelques changements au dépôt original afin que nous puissions
 récupérer les changements
 
-h2. Faire un changement dans le dépôt original *hello*
+h2. Faire un changement dans le dépôt original *bonjour*
 
 Execute:
-cd ../hello
+cd ../bonjour
 +pwd
-# (Vous devriez maintenant être dans le dépôt original hello maintenant)
+# (Vous devriez maintenant être dans le dépôt original bonjour maintenant)
 
-p{color:red}. *NOTE: Maintanant dans le dépôt _hello_*
+p{color:red}. *NOTE: Maintanant dans le dépôt _bonjour_*
 
 p. Faire les changements suivants à README:
 
 File: README
-This is the Hello World example from the git tutorial.
+This is the Bonjour Monde example from the git tutorial.
 (changed in original)
 EOF
 
@@ -2323,14 +2330,14 @@ h3. Buts
 * Apprendre comment rapporte les changements depuis un dépôt distant.
 
 Execute:
-cd ../cloned_hello
+cd ../cloned_bonjour
 +pwd
 git fetch
 =fetch
 git hist --all
 =hist
 
-p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_hello_*
+p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_bonjour_*
 
 Output:
 =fetch
@@ -2361,7 +2368,7 @@ cat README
 
 Output:
 $ cat README
-This is the Hello World example from the git tutorial.
+This is the Bonjour Monde example from the git tutorial.
 EOF
 
 p. Voyez, pas de changements.
@@ -2393,7 +2400,7 @@ cat README
 
 Output:
 $ cat README
-This is the Hello World example from the git tutorial.
+This is the Bonjour Monde example from the git tutorial.
 (changed in original)
 EOF
 
@@ -2471,9 +2478,9 @@ h2. Créer un dépôt "nu".
 Execute:
 cd ..
 +pwd
-git clone --bare hello hello.git
+git clone --bare bonjour bonjour.git
 =clone
-ls hello.git
+ls bonjour.git
 =ls
 
 p{color:red}. *NOTE: Maintenant dans le répertoire de travail*
@@ -2485,7 +2492,7 @@ EOF
 
 p. La convention est que les dépôts finissant avec '.git' sont des
 dépôts "nus". Nous pouvons voir qu'il n'y a pas de répertoire de travail
-dans le dépôt hello.git. C'est essentiellement rien de plus que le
+dans le dépôt bonjour.git. C'est essentiellement rien de plus que le
 répertoire .git d'un dépôt non "nu".
 
 ----------------------------------------------------------------------
@@ -2496,14 +2503,14 @@ h3. Buts
 * Ajouter le dépôt dit "nu" (bare) comme distant par rapport à notre
 dépôt d'origine.
 
-p. Ajoutons le dépôt hello.git à notre dépôt d'origine.
+p. Ajoutons le dépôt bonjour.git à notre dépôt d'origine.
 
 Execute:
-cd hello
+cd bonjour
 +pwd
-git remote add shared ../hello.git
+git remote add shared ../bonjour.git
 
-p{color:red}. *NOTE: Maintenant dans le dépôt +hello+.*
+p{color:red}. *NOTE: Maintenant dans le dépôt +bonjour+.*
 
 ----------------------------------------------------------------------
 h1. Envoyer un changement
@@ -2521,7 +2528,7 @@ p. Commençons par créer un changement à envoyer. Editer le fichier README
 et le commiter
 
 File: README
-This is the Hello World example from the git tutorial.
+This is the Bonjour Monde example from the git tutorial.
 (Changed in the original and pushed to shared)
 EOF
 
@@ -2561,15 +2568,15 @@ p. Aller rapidement dans le clône du dépôt et maintenant récupérons rapidem
 les changements qu'on vient juste d'effectuer sur le dépôt partagé.
 
 Execute:
-cd ../cloned_hello
+cd ../cloned_bonjour
 +pwd
 
-p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_hello_.*
+p{color:red}. *NOTE: Maintenant dans le dépôt _cloned_bonjour_.*
 
 p. Continuer avec ...
 
 Execute:
-git remote add shared ../hello.git
+git remote add shared ../bonjour.git
 git branch --track shared master
 git pull shared master
 cat README
@@ -2594,11 +2601,11 @@ p. Maintenant, dans une fenêtre de terminal séparée, aller au répertoire de 
 
 execute:
 # (From the work directory)
-git clone git://localhost/hello.git network_hello
-cd network_hello
+git clone git://localhost/bonjour.git network_bonjour
+cd network_bonjour
 ls
 
-p. Vous devriez voir une copie du projet hello.
+p. Vous devriez voir une copie du projet bonjour.
 
 h2. Envoyer vers le démon Git
 
