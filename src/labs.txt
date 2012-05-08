@@ -1743,11 +1743,11 @@ Output:
 =hist
 EOF
 
-p. En fusionnant master dans notre branche saluer périodiquement, vous pouvez
+p. En fusionnant master dans votre branche saluer périodiquement, vous pouvez
 récupérer n'importe quels changements dans master et garder vos changements
 dans saluer pour être compatible avec ceux dans la branche principale.
 
-p. However, Cela produit des graphes de commit très "moche". plus tard, nous
+p. Cependant, cela produit des graphes de commit très "moches". Plus tard, nous
 verrons les options pour faire un changement de base (rebase) plutôt qu'une
 fusion (merge).
 
@@ -1851,7 +1851,7 @@ p. La première section est la version dans le head de la branche courante
 h2. Corriger le conflit
 
 p. Vous devez manuellement résoudre le conflit. Modifier @lib/bonjour.rb@
-pour être comme suivant.
+pour qu'il soit comme ci-dessous.
 
 File: lib/bonjour.rb
 require 'faireunsalut'
@@ -1905,12 +1905,12 @@ h1. Réinitialiser la branche Saluer
 
 h3. Buts
 
-* Réinitialiser la branche saluer au point vant la première fusion.
+* Réinitialiser la branche saluer au point avant la première fusion.
 
 h2. Réinitialiser la branche saluer
 
 p. Revenons dans le temps sur la branche saluer à la phase _avant_ que nous
-fusionnons master dedans. Nous pouvons *réintialiser* une branche à n'importe
+fusionnions master dedans. Nous pouvons *réintialiser* une branche à n'importe
 quel commit souhaité. Essentiellement, c'est une modification du pointeur de
 la branche pour qu'il pointe n'importe où dans l'arbre de commit.
 
@@ -1965,9 +1965,9 @@ h2. Réinitialiser la branche master
 
 p. Quand nous avons ajouté le mode interactif dans la branche master, nous
 avons fait un changement qui rentre en conflit avec les changements dans la
-branche saluer. "Rembobinons" la branche master au point avantle changement
+branche saluer. "Rembobinons" la branche master au point avant le changement
 conflictuel. Cela va nous permettre de faire une démonstration de la commande
-rebase sans s'inquiéter des conflits.
+rebase sans s'inquièter des conflits.
 
 Execute:
 git checkout master
@@ -1989,7 +1989,7 @@ git hist --all
 =log2
 
 p. Examiner le log. Cela devrait ressembler comme si on avait rembobiné
-le dépôt dans le temps au point avant la fusion de quoi que ce soit.
+le dépôt dans le temps, au point avant la fusion de quoi que ce soit.
 
 Output:
 =log2
@@ -2002,7 +2002,7 @@ h3. Buts
 
 * Utiliser la commande rebase plutôt que la commande merge.
 
-p. Ok, nous sommes maintenant revenu dans le temps avant la première fusion et
+p. Ok, nous sommes maintenant revenus dans le temps avant la première fusion et
 nous voulons obtenir les changements de master dans notre branche saluer.
 
 p. Cette fois nous allons utiliser la commande rebase à la place de la commande
@@ -2072,8 +2072,8 @@ $
 EOF
 
 p. Comme le head de master est une ancêtre direct du head de la branche
-saluer, git est capable de faire un merge en "avance rapide". Quand
-on fait l'avance rapide, le pointeur de la branche est simplement déplacé en
+saluer, git est capable de faire un merge en "avance rapide". Quand on
+fait l'avance rapide, le pointeur de la branche est simplement déplacé en
 avant pour pointer vers le même commit que pour la branche faireunsalut.
 
 p. Il n'y aura jamais de conflits dans un merge en "avance rapide".
@@ -2205,8 +2205,8 @@ EOF
 
 p. Vous devriez maintenant voir une liste de tous les commits dans le
 nouveau dépôt, et il devrait (plus ou moins) correspondre à l'historique
-commits dans le dépôt original. La seule différence devrait être dans le
-nom des branches.
+des commits dans le dépôt original. La seule différence devrait être dans
+le nom des branches.
 
 h2. Branches distantes
 
@@ -2243,8 +2243,8 @@ EOF
 
 p. Maintenant, nous voyons que le dépôt distant "origin"est simplement le
 dépôt original *bonjour*. Les dépôts distants vivent typiquement sur une
-machine séparée, de manière possible aussi sur une serveur centralisé.
-Comme nous le voyons ici, cependant, ils peuvent aussi pointer vers un
+machine séparée, ils peuvent aussi être sur une serveur centralisé
+comme nous le voyons ici. Cependant, ils peuvent aussi pointer vers un
 répertoire sur la même machine.
 Il n'y a rien de particulier à propos du nom "origin", cependant la
 convention est d'utiliser le nom "origin" pour le nom du dépôt centralisé
@@ -2267,9 +2267,8 @@ Output:
 =branch
 EOF
 
-p. C'est ça, seule la  branche master est listée. Où est la branche saluer
-? La commande *git* *branch* liste seulement les branches locales par
-défaut.
+p. C'est ça, seule la  branche master est listée. Où est la branche saluer?
+La commande *git* *branch* liste seulement les branches locales par défaut.
 
 h2. Lister les branches distantes
 
@@ -2318,7 +2317,7 @@ Execute:
 git add LISEZMOI
 git commit -m "Changement de LISEZMOI dans le dépôt original"
 
-h2. Après
+h2. Et après
 
 p. Le dépôt original maintenant a des changements tardifs qui ne sont
 pas dans la version clonée. Ensuite, nous allons récupérer ces changements
@@ -2351,9 +2350,9 @@ original, mais ils ne sont pas intégrés dans les branches locales
 du dépôt cloné.
 
 p. Trouver le commit "Changement de LISEZMOI dans le dépôt original" dans
-l'historique ci-dessus. Notez que le commit inclut "origin/master" et "origin/HEAD".
+l'historique ci-dessus. Noter que le commit inclut "origin/master" et "origin/HEAD".
 
-p. Maintenant regardez dans le commit "Updated Rakefile". Vous allez voir
+p. Maintenant regarder dans le commit "Rakefile mis à jour". Vous allez voir
 que sa branche locale master pointe vers ce commit, pas vers le nouveau commit
 que nous venons juste de rapporter.
 
@@ -2444,7 +2443,7 @@ h3. Buts
 
 p. Les branches qui commencent avec remotes/origin sont les branches
 du dépôt original. Notez que nous n'avons plus une branche appelée saluer,
-mais git sait que le dépôt original has une branche saluer.
+mais git sait que le dépôt original a une branche saluer.
 
 h2. Ajouter une branche locale qui permet de suivre une branche distante.
 
@@ -2521,9 +2520,9 @@ h3. Buts
 
 * Apprendre comment envoyer un changement vers un dépôt distant.
 
-p. Comme les dépôts dit "nus" sont habituellement partagé sur une sorte
+p. Comme les dépôts dit "nus" sont habituellement partagés sur une sorte
 de serveur réseau, il est difficile de se rendre dans le dépôt et de récupérer.
-les changements. Ainsi nous avons besoins d'envoyer nos changements dans les
+les changements. Ainsi nous avons besoin d'envoyer nos changements dans les
 autres dépôts.
 
 p. Commençons par créer un changement à envoyer. Editer le fichier LISEZMOI
@@ -2602,7 +2601,7 @@ git daemon --verbose --export-all --base-path=.
 p. Maintenant, dans une fenêtre de terminal séparée, aller au répertoire de travail
 
 execute:
-# (From the work directory)
+# (Depuis le répertoire de travail)
 git clone git://localhost/bonjour.git network_bonjour
 cd network_bonjour
 ls
