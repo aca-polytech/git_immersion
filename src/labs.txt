@@ -168,12 +168,12 @@ Output:
 EOF
 
 p. La première chose à constater est que git sait que le fichier @bonjour.rb@
-a été modifié, mais que git n'a pas encore averti de ces changements.
+a été modifié, mais que git n'a pas encore été averti de ces changements.
 
-p. Noter également que le message de status vous guide sur ce que vous alles
+p. Noter également que le message de status vous guide sur ce que vous allez
 devoir faire par la suite. Si vous voulez ajouter ces changements au répertoire,
 alors utiliser la commande @git add@. Dans le cas contraire, la commande
-@git checkout@ peut être utilisé pour annuler les changements.
+@git checkout@ peut être utilisée pour annuler les changements.
 
 h2. Up Next
 
