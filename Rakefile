@@ -34,6 +34,7 @@ task :publish => [:not_dirty, :build, :labs] do
   sh "git commit -m 'Updated docs to #{head}'"
   sh 'git push'
   sh 'git clean -ffxd'
+  sh 'rm -rf git_tutorial/repos/* auto'
   sh 'git checkout master'
 end
 
