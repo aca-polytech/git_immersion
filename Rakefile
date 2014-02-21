@@ -33,6 +33,7 @@ task :publish => [:not_dirty, :build, :labs] do
   sh 'git add .'
   sh "git commit -m 'Updated docs to #{head}'"
   sh 'git push'
+  sh 'git clean -ffxd'
   sh 'git checkout master'
 end
 
