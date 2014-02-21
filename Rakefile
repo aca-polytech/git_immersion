@@ -11,7 +11,7 @@ CLOBBER.include("samples", "auto", "git_tutorial/repos")
 
 desc "Clean the samples directory"
 task :clean_samples do
-  rm_r SAMPLES_DIR rescue nil
+  rm_rf SAMPLES_DIR rescue nil
 end
 
 task :default => :labs
