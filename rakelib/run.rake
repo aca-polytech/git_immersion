@@ -35,7 +35,7 @@ module RunLabs
 
   def freeze_lab(lab_number)
     repo_name = ("lab_%02d" % (lab_number+1))
-    rm_rf "#{REPOS_DIR}/#{repo_name}" rescue nil
+    rm_r "#{REPOS_DIR}/#{repo_name}" rescue nil
     cp_r '.', "#{REPOS_DIR}/#{repo_name}"
     puts "FREEZING: #{repo_name}"
   end
@@ -120,7 +120,7 @@ module RunLabs
 
   def build_to(last_lab=nil)
     old_dir = Dir.pwd
-    rm_rf "auto" rescue nil
+    rm_r "auto" rescue nil
     mkdir_p "auto"
     open("src/labs.txt") do |lab_source|
       Dir.chdir "auto"
