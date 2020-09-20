@@ -1812,12 +1812,12 @@ h2. Fusionner master dans saluer
 p. Maintenant, retournons dans la branche saluer et essayons de fusionner master.
 
 Execute:
-git checkout greet
+git checkout saluer
 !git merge master
 
 Output:
-$ git checkout greet
-Switched to branch 'greet'
+$ git checkout saluer
+Switched to branch 'saluer'
 $ git merge master
 Auto-merging lib/bonjour.rb
 CONFLICT (content): Merge conflict in lib/bonjour.rb
